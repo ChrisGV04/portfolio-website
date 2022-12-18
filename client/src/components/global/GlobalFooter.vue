@@ -7,7 +7,6 @@ const localeRoute = useLocaleRoute();
     <BaseContainer no-y-padding class="flex gap-4 py-20">
       <span class="flex-1">&copy; CGV WEB {{ new Date().getFullYear() }}</span>
 
-      <!-- TODO: Add logo and localized route -->
       <NuxtLink :to="localeRoute('/')">
         <span class="sr-only">{{ $t('navigation.home') }}</span>
         <img src="/logo/cgvweb-logo-inline.webp" alt="CGV WEB Logo" class="h-6" />
