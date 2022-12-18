@@ -1,18 +1,16 @@
 <script setup lang="ts">
-const { locale, t } = useI18n();
-const localePath = useLocalePath();
-
+const { t } = useI18n();
 useHead({ title: t('pageTitles.home') });
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <h1 class="text-2xl font-semibold uppercase text-gray-900">{{ $t('buttons.viewLive') }}</h1>
-    <span
-      >Current locale: <strong>{{ locale }}</strong></span
-    >
+  <main>
+    <HomeHeroSection />
 
-    <NuxtLink :to="localePath('/', 'es')">Es</NuxtLink>
-    <NuxtLink :to="localePath('/', 'en')">En</NuxtLink>
-  </div>
+    <section>
+      <BaseContainer>
+        <h2>Hola mundo!</h2>
+      </BaseContainer>
+    </section>
+  </main>
 </template>
