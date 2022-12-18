@@ -4,6 +4,7 @@
   <Html>
     <Body class="bg-gray-50 antialiased">
       <NuxtPage />
+      <GlobalFooter />
     </Body>
   </Html>
 </template>
