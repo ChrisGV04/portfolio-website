@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const localeRoute = useLocaleRoute();
+</script>
 
 <template>
   <footer>
@@ -6,7 +8,7 @@
       <span class="flex-1">&copy; CGV WEB {{ new Date().getFullYear() }}</span>
 
       <!-- TODO: Add logo and localized route -->
-      <NuxtLink to="/">
+      <NuxtLink :to="localeRoute('/')">
         <span class="sr-only">{{ $t('navigation.home') }}</span>
         <img src="/logo/cgvweb-logo-inline.webp" alt="CGV WEB Logo" class="h-6" />
       </NuxtLink>
