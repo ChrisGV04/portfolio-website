@@ -13,6 +13,8 @@ module.exports = {
       },
 
       aspectRatio: {
+        '4-5': '4 / 5',
+        '5-4': '5 / 4',
         'long-img': '3 / 2',
         'long-img-v': '2 / 3',
         portrait: '9 / 16',

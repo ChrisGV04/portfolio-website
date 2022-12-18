@@ -6,11 +6,6 @@ useHead({ title: t('pageTitles.home') });
 <template>
   <main>
     <HomeHeroSection />
-
-    <section>
-      <BaseContainer>
-        <h2>Hola mundo!</h2>
-      </BaseContainer>
-    </section>
+    <HomeServicesSection />
   </main>
 </template>
