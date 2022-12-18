@@ -1,0 +1,51 @@
+{
+  "navigation": {
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "contact": "Contacto"
+  },
+
+  "buttons": {
+    "viewProject": "Ver proyecto",
+    "viewLive": "Ver en vivo"
+  },
+
+  "pageTitles": {
+    "home": "Diseño y Desarrollo Web"
+  },
+
+  "home": {
+    "hero": {
+      "line1": "Diseño y Desarrollo Web",
+      "line2": "Personalizado"
+    },
+
+    "services": {
+      "title": "Servicios digitales",
+      "subtext": "Conoce lo que ofrezco y como te puedo ayudar.",
+      "coding": {
+        "title": "Programación Desde Cero",
+        "cat1": "Plataformas",
+        "cat2": "Apps Web"
+      },
+      "web": {
+        "title": "Diseño y Desarrollo Web",
+        "cat1": "Páginas Web",
+        "cat2": "Landing Pages"
+      },
+      "ecommerce": {
+        "title": "Tiendas en Línea",
+        "cat1": "Ecommerce",
+        "cat2": "Catálogos"
+      }
+    },
+
+    "featuredProjects": "Proyectos Destacados"
+  },
+
+  "contact": {
+    "whatsapp": "Escríbeme en WhatsApp",
+    "instagram": "Sígueme en Instagram",
+    "email": "Escríbeme por correo electrónico"
+  }
+}

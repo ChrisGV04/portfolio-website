@@ -1,0 +1,51 @@
+{
+  "navigation": {
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+
+  "buttons": {
+    "viewProject": "View project",
+    "viewLive": "View live"
+  },
+
+  "pageTitles": {
+    "home": "Web Design and Development"
+  },
+
+  "home": {
+    "hero": {
+      "line1": "Custom Web design &",
+      "line2": "Development"
+    },
+
+    "services": {
+      "title": "Digital Services",
+      "subtext": "Check out what I offer and how I can help you.",
+      "coding": {
+        "title": "Software Development",
+        "cat1": "Platforms",
+        "cat2": "Web Apps"
+      },
+      "web": {
+        "title": "Web Design & Development",
+        "cat1": "Websites",
+        "cat2": "Landing Pages"
+      },
+      "ecommerce": {
+        "title": "Ecommerce",
+        "cat1": "Shops",
+        "cat2": "Catalogues"
+      }
+    },
+
+    "featuredProjects": "Featured Projects"
+  },
+
+  "contact": {
+    "whatsapp": "Chat on WhatsApp",
+    "instagram": "Follow me on Instagram",
+    "email": "Write me an email"
+  }
+}

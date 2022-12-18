@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   srcDir: 'src',
 
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@vueuse/nuxt', 'nuxt-icon'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@vueuse/nuxt', 'nuxt-icon', '@nuxtjs/i18n'],
 
   app: {
     head: {
@@ -22,6 +22,36 @@ export default defineNuxtConfig({
     public: {
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       mediaUrl: process.env.NUXT_PUBLIC_MEDIA_URL,
+    },
+  },
+
+  i18n: {
+    lazy: true,
+    langDir: 'lang',
+    defaultLocale: 'es',
+    locales: [
+      { code: 'es', file: 'es.json' },
+      { code: 'en', file: 'en.json' },
+    ],
+
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n',
+      redirectOn: 'root',
+    },
+
+    vueI18n: {
+      legacy: false,
+      locale: 'es',
+    },
+  },
+
+  typescript: {
+    strict: true,
+    tsConfig: {
+      compilerOptions: {
+        types: ['@nuxtjs/i18n'],
+      },
     },
   },
 });
