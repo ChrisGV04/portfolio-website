@@ -7,7 +7,10 @@ export default defineNuxtConfig({
     head: {
       titleTemplate: '%s - CGV WEB',
 
-      link: [{ rel: 'stylesheet', href: 'https://api.fontshare.com/v2/css?f[]=switzer@1&display=swap' }],
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+        { rel: 'stylesheet', href: 'https://api.fontshare.com/v2/css?f[]=switzer@1&display=swap' },
+      ],
 
       meta: [
         { property: 'og:type', content: 'Website' },
