@@ -3,6 +3,7 @@
 <template>
   <Html>
     <Body class="bg-gray-50 antialiased">
+      <GlobalHeader />
       <NuxtPage />
       <GlobalFooter />
     </Body>
