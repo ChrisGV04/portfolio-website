@@ -46,7 +46,7 @@ const services: ServiceItem[] = [
         <div class="aspect-4-5 w-full rounded-2xl bg-gray-300"></div>
 
         <div class="mt-4 flex flex-col">
-          <h3 class="text-2xl font-medium text-gray-900">{{ service.name }}</h3>
+          <h3 class="text-xl font-medium text-gray-900 lg:text-2xl">{{ service.name }}</h3>
           <span class="text-gray-500">{{ service.cat1 }} &middot; {{ service.cat2 }}</span>
         </div>
       </div>
