@@ -21,7 +21,9 @@
       <span class="text-gray-500">Plataformas &middot; Apps Web</span>
 
       <!-- Use real button -->
-      <RouterLink to="/">Botón</RouterLink>
+      <RouterLink to="/">
+        <BaseButton class="btn-primary" icon-right="heroicons-arrow-right">Ver proyecto</BaseButton>
+      </RouterLink>
     </div>
   </BaseContainer>
 </template>
