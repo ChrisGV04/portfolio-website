@@ -5,7 +5,7 @@
     <div class="flex items-end justify-between gap-10">
       <h3 class="flex-1 text-h2 font-medium uppercase text-gray-900">Nombre del proyecto</h3>
 
-      <p class="w-full max-w-lg text-xl text-gray-700">
+      <p class="w-full max-w-lg text-body text-gray-700">
         Este es un espacio dedicado a escribir una breve reseña de lo que trató el proyecto actual en un
         máximo de 3 renglones para conservar la estética.
       </p>
