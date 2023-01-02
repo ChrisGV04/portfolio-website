@@ -30,7 +30,9 @@ const services: ServiceItem[] = [
   <section>
     <BaseContainer>
       <div class="flex flex-col">
-        <h2 class="text-7xl font-medium uppercase text-gray-900">{{ $t('home.services.title') }}</h2>
+        <h2 class="text-h2 font-medium uppercase text-gray-900">
+          {{ $t('home.services.title') }}
+        </h2>
         <span class="mt-4 text-xl text-gray-700">{{ $t('home.services.subtext') }}</span>
       </div>
 

@@ -12,6 +12,11 @@ module.exports = {
         sans: ['Switzer', 'system-ui', 'sans-serif'],
       },
 
+      fontSize: {
+        h1: ['min(9.5vw, 8rem)', '1'],
+        h2: ['min(8vw, 4.5rem)', '1'],
+      },
+
       aspectRatio: {
         '4-5': '4 / 5',
         '5-4': '5 / 4',

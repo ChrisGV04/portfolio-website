@@ -3,7 +3,7 @@
 <template>
   <section class="overflow-hidden">
     <BaseContainer>
-      <h2 class="text-[clamp(2.5rem,8.4vw,8rem)] font-medium uppercase leading-none">
+      <h2 class="text-h1 font-medium uppercase leading-none">
         {{ $t('home.featuredProjects') }}
       </h2>
     </BaseContainer>
