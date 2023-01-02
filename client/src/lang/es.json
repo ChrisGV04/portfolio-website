@@ -12,7 +12,10 @@
   },
 
   "pageTitles": {
-    "home": "Diseño y Desarrollo Web"
+    "home": "Diseño y Desarrollo Web",
+    "projects": "Proyectos Destacados",
+    "about": "Sobre Mí",
+    "contact": "Contáctame"
   },
 
   "home": {

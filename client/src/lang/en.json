@@ -12,7 +12,10 @@
   },
 
   "pageTitles": {
-    "home": "Web Design and Development"
+    "home": "Web Design and Development",
+    "projects": "Featured Projects",
+    "about": "About Me",
+    "contact": "Get in Touch"
   },
 
   "home": {
