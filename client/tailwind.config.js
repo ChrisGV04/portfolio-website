@@ -15,7 +15,7 @@ module.exports = {
       fontSize: {
         h1: ['min(9.5vw, 8rem)', '1'],
         h2: ['min(8vw, 4.5rem)', '1'],
-        body: ['clamp(1rem, 2vw, 1.25rem)', '1.4'],
+        body: ['clamp(1rem, 2.5vw, 1.25rem)', '1.4'],
       },
 
       aspectRatio: {
