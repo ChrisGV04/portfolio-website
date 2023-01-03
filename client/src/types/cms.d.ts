@@ -28,16 +28,12 @@ export interface Project {
   title: string;
   url?: string;
   theme:
-    | 'sl'
     | 'gr'
-    | 'zn'
-    | 'nt'
-    | 'st'
     | 'rd'
     | 'or'
     | 'am'
-    | 'yl'
     | 'lm'
+    | 'gn'
     | 'em'
     | 'tl'
     | 'cy'
@@ -47,59 +43,60 @@ export interface Project {
     | 'vl'
     | 'pr'
     | 'fc'
-    | 'pn'
-    | 'rs';
+    | 'pn';
   slug: string;
-  featuredMedia: string | Upload;
-  categories: string[] | ProjectCategory[];
+  featuredMedia: Upload;
+  categories: ProjectCategory[];
   meta: {
     company: string;
     year: number;
   };
   content: (
-    | {
-        title: string;
-        body: string;
-        id?: string;
-        blockName?: string;
-        blockType: 'block-simple-text';
-      }
-    | {
-        title: string;
-        body: string;
-        media: string | Upload;
-        mediaPos?: 'l' | 'r';
-        id?: string;
-        blockName?: string;
-        blockType: 'block-text-media';
-      }
-    | {
-        title: string;
-        body: string;
-        media: {
-          res: string | Upload;
-          id?: string;
-        }[];
-        mediaPos?: 'l' | 'r';
-        id?: string;
-        blockName?: string;
-        blockType: 'block-text-mobile';
-      }
-    | {
-        img: string | Upload;
-        id?: string;
-        blockName?: string;
-        blockType: 'block-fullscreen-img';
-      }
-    | {
-        img: string | Upload;
-        id?: string;
-        blockName?: string;
-        blockType: 'block-desktop-media';
-      }
+    | ProjectSimpleTextBlock
+    | ProjectTextMediaBlock
+    | ProjectTextMobileBlock
+    | ProjectFullscreenImgBlock
+    | ProjectDesktopMediaBlock
   )[];
   createdAt: string;
   updatedAt: string;
+}
+export interface ProjectSimpleTextBlock {
+  id: string;
+  body: string;
+  title: string;
+  blockName: string;
+  blockType: 'block-simple-text';
+}
+export interface ProjectTextMediaBlock {
+  id: string;
+  title: string;
+  body: string;
+  media: Upload;
+  mediaPos: 'l' | 'r';
+  blockName: string;
+  blockType: 'block-text-media';
+}
+export interface ProjectTextMobileBlock {
+  id: string;
+  title: string;
+  body: string;
+  mediaPos: 'l' | 'r';
+  blockName?: string;
+  blockType: 'block-text-mobile';
+  media: { res: Upload; id: string }[];
+}
+export interface ProjectFullscreenImgBlock {
+  id: string;
+  img: Upload;
+  blockName: string;
+  blockType: 'block-fullscreen-img';
+}
+export interface ProjectDesktopMediaBlock {
+  id: string;
+  img: Upload;
+  blockName: string;
+  blockType: 'block-desktop-media';
 }
 export interface ProjectCategory {
   id: string;

@@ -15,10 +15,13 @@ module.exports = {
       fontSize: {
         h1: ['min(9.5vw, 8rem)', '1'],
         h2: ['min(8vw, 4.5rem)', '1'],
+        h3: ['min(7vw, 3.75rem)', '1'],
+        h4: ['min(4.2vw, 2.25rem)', '1'],
         body: ['clamp(1rem, 2.5vw, 1.25rem)', '1.4'],
       },
 
       aspectRatio: {
+        '2-1': '2 / 1',
         '4-5': '4 / 5',
         '5-4': '5 / 4',
         'long-img': '3 / 2',
