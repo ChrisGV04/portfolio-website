@@ -1,14 +1,14 @@
 import { GlobalConfig } from 'payload/types';
+import { Projects } from '../collections/Projects';
+import { Uploads } from '../collections/Uploads';
 
-const HomePage: GlobalConfig = {
+export const HomePage: GlobalConfig = {
   slug: 'homepage',
   label: 'Home',
   access: {
     read: () => true,
   },
-  admin: {
-    group: 'Pages',
-  },
+  admin: { group: 'Pages' },
 
   fields: [
     {
@@ -21,13 +21,16 @@ const HomePage: GlobalConfig = {
               type: 'array',
               name: 'heroGallery',
               label: 'Hero Gallery',
+              maxRows: 12,
+              minRows: 12,
+              required: true,
               labels: { singular: 'Image', plural: 'Images' },
               fields: [
                 {
                   name: 'img',
                   type: 'upload',
                   label: 'Image',
-                  relationTo: 'uploads',
+                  relationTo: Uploads.slug,
                 },
               ],
             },
@@ -42,27 +45,35 @@ const HomePage: GlobalConfig = {
               type: 'upload',
               label: 'Coding Image',
               name: 'codingImage',
-              relationTo: 'uploads',
+              relationTo: Uploads.slug,
             },
             {
               type: 'upload',
               name: 'webImage',
               label: 'Web Image',
-              relationTo: 'uploads',
+              relationTo: Uploads.slug,
             },
             {
               type: 'upload',
-              relationTo: 'uploads',
+              relationTo: Uploads.slug,
               name: 'ecommerceImage',
               label: 'Ecommerce Image',
             },
           ],
         }, // End services tab
 
-        // TODO: Select which projects to feature
+        {
+          label: 'Projects',
+          fields: [
+            {
+              type: 'relationship',
+              relationTo: Projects.slug,
+              name: 'featProjects',
+              hasMany: true,
+            },
+          ],
+        },
       ],
     },
   ],
 };
-
-export default HomePage;

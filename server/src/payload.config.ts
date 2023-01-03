@@ -7,7 +7,7 @@ import { ProjectCategories } from './collections/ProjectCategories';
 import { Projects } from './collections/Projects';
 import { Uploads } from './collections/Uploads';
 import { Users } from './collections/Users';
-import HomePage from './globals/Homepage';
+import { HomePage } from './globals/Homepage';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
