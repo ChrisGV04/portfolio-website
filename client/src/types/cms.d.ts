@@ -1,15 +1,15 @@
 export interface Homepage {
   id: string;
   heroGallery: {
-    img?: string | Upload;
-    id?: string;
+    img: string | Upload;
+    id: string;
   }[];
   services?: {
-    codingImage?: string | Upload;
-    webImage?: string | Upload;
-    ecommerceImage?: string | Upload;
+    codingImage: string | Upload;
+    webImage: string | Upload;
+    ecommerceImage: string | Upload;
   };
-  featProjects?: string[] | Project[];
+  featProjects: string[] | Project[];
 }
 export interface Upload {
   id: string;
@@ -49,7 +49,7 @@ export interface Project {
     | 'fc'
     | 'pn'
     | 'rs';
-  slug?: string;
+  slug: string;
   featuredMedia: string | Upload;
   categories: string[] | ProjectCategory[];
   meta: {
@@ -104,5 +104,5 @@ export interface Project {
 export interface ProjectCategory {
   id: string;
   title: string;
-  slug?: string;
+  slug: string;
 }

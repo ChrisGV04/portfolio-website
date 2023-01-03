@@ -30,6 +30,7 @@ export const HomePage: GlobalConfig = {
                   name: 'img',
                   type: 'upload',
                   label: 'Image',
+                  required: true,
                   relationTo: Uploads.slug,
                 },
               ],
@@ -43,18 +44,21 @@ export const HomePage: GlobalConfig = {
           fields: [
             {
               type: 'upload',
+              required: true,
               label: 'Coding Image',
               name: 'codingImage',
               relationTo: Uploads.slug,
             },
             {
               type: 'upload',
+              required: true,
               name: 'webImage',
               label: 'Web Image',
               relationTo: Uploads.slug,
             },
             {
               type: 'upload',
+              required: true,
               relationTo: Uploads.slug,
               name: 'ecommerceImage',
               label: 'Ecommerce Image',
@@ -70,9 +74,10 @@ export const HomePage: GlobalConfig = {
               relationTo: Projects.slug,
               name: 'featProjects',
               hasMany: true,
+              required: true,
             },
           ],
-        },
+        }, // End projects tab
       ],
     },
   ],
