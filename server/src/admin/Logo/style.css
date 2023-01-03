@@ -1,0 +1,12 @@
+.logo img {
+  max-width: 10rem;
+  margin: auto;
+}
+
+[data-theme='light'] .logo .dark {
+  display: none;
+}
+
+[data-theme='dark'] .logo .light {
+  display: none;
+}

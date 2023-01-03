@@ -1,0 +1,12 @@
+.icon img {
+  max-width: 4rem;
+  margin: auto;
+}
+
+[data-theme='light'] .icon .dark {
+  display: none;
+}
+
+[data-theme='dark'] .icon .light {
+  display: none;
+}
