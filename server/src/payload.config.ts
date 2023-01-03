@@ -1,10 +1,12 @@
 import dotenv from 'dotenv';
 import path from 'path';
 import { buildConfig } from 'payload/config';
-import { Users } from './collections/Users';
 import { Icon } from './admin/Icon';
 import { Logo } from './admin/Logo';
-import Uploads from './collections/Uploads';
+import { ProjectCategories } from './collections/ProjectCategories';
+import { Projects } from './collections/Projects';
+import { Uploads } from './collections/Uploads';
+import { Users } from './collections/Users';
 import HomePage from './globals/Homepage';
 
 dotenv.config({
@@ -37,7 +39,7 @@ export default buildConfig({
   },
 
   globals: [HomePage],
-  collections: [Users, Uploads],
+  collections: [Projects, ProjectCategories, Users, Uploads],
 
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

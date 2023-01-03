@@ -6,6 +6,7 @@ require('dotenv').config();
 const app = express();
 
 app.use('/logo', express.static(path.join(__dirname, '../public/logo')));
+app.use('/block-tmbs', express.static(path.join(__dirname, '../public/blocks')));
 
 // Redirect root to Admin panel
 app.get('/', (_, res) => {

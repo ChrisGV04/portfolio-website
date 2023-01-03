@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload/types';
 
-const Uploads: CollectionConfig = {
+export const Uploads: CollectionConfig = {
   slug: 'uploads',
   access: {
     read: (): boolean => true,
@@ -34,4 +34,3 @@ const Uploads: CollectionConfig = {
   ],
 };
 
-export default Uploads;
