@@ -34,7 +34,7 @@ export const Projects: CollectionConfig = {
       name: 'theme',
       label: 'Theme color',
       required: true,
-      defaultValue: 'sl',
+      defaultValue: 'gr',
       options: [
         { label: 'Gray', value: 'gr' },
         { label: 'Red', value: 'rd' },
