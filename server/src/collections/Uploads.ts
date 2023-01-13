@@ -29,8 +29,7 @@ export const Uploads: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
-      label: 'Texto alternativo',
+      label: 'Alt text',
     },
   ],
 };
-
