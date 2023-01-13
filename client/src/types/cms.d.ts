@@ -1,15 +1,15 @@
 export interface Homepage {
   id: string;
   heroGallery: {
-    img: string | Upload;
+    img: Upload;
     id: string;
   }[];
   services?: {
-    codingImage: string | Upload;
-    webImage: string | Upload;
-    ecommerceImage: string | Upload;
+    codingImage: Upload;
+    webImage: Upload;
+    ecommerceImage: Upload;
   };
-  featProjects: string[] | Project[];
+  featProjects: Project[];
 }
 export interface Upload {
   id: string;
