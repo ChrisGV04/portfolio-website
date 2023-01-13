@@ -22,7 +22,7 @@ const links = computed(() => [
 <template>
   <header class="fixed inset-x-0 top-0 z-30 mx-auto flex max-w-[95rem] justify-between p-4 lg:p-8">
     <NuxtLink :to="localeRoute('/')">
-      <span class="sr-only">{{ $t('navigation.home') }}</span>
+      <span class="sr-only">{{ t('navigation.home') }}</span>
       <img src="/logo/cgvweb-logo-box.webp" alt="CGV WEB Logo" class="w-20" />
     </NuxtLink>
 

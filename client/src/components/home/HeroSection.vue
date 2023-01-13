@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { breakpointsTailwind } from '@vueuse/core';
 
+const { t } = useI18n();
+
 const bp = useBreakpoints(breakpointsTailwind);
 const isSm = bp.smaller('sm');
 
@@ -27,8 +29,8 @@ const columns = computed(() => {
     <BaseContainer no-y-padding class="relative flex h-full items-center pb-8 sm:items-end">
       <div class="z-10 w-full">
         <h1 class="text-center uppercase leading-none text-gray-900">
-          <span class="block text-[min(5.5vw,4.5rem)]">{{ $t('home.hero.line1') }}</span>
-          <span class="block text-h1 font-black">{{ $t('home.hero.line2') }}</span>
+          <span class="block text-[min(5.5vw,4.5rem)]">{{ t('home.hero.line1') }}</span>
+          <span class="block text-h1 font-black">{{ t('home.hero.line2') }}</span>
         </h1>
       </div>
     </BaseContainer>

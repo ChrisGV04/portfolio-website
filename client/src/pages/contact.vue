@@ -6,6 +6,6 @@ useHead({ title: t('pageTitles.contact') });
 <template>
   <main>
     <Body class="bg-gray-50" />
-    <h1>{{ $t('navigation.contact') }}</h1>
+    <h1>{{ t('navigation.contact') }}</h1>
   </main>
 </template>

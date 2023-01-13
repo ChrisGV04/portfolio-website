@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n();
 const localeRoute = useLocaleRoute();
 </script>
 
@@ -9,7 +10,7 @@ const localeRoute = useLocaleRoute();
 
       <div>
         <NuxtLink :to="localeRoute('/')">
-          <span class="sr-only">{{ $t('navigation.home') }}</span>
+          <span class="sr-only">{{ t('navigation.home') }}</span>
           <img src="/logo/cgvweb-logo-inline.webp" alt="CGV WEB Logo" class="h-6" />
         </NuxtLink>
 
@@ -19,18 +20,18 @@ const localeRoute = useLocaleRoute();
       </div>
 
       <div class="flex flex-1 items-center justify-end gap-6">
-        <a href="#" :title="$t('contact.whatsapp')" class="text-gray-600 hover:text-gray-800"
-          ><span class="sr-only">{{ $t('contact.whatsapp') }}</span>
+        <a href="#" :title="t('contact.whatsapp')" class="text-gray-600 hover:text-gray-800"
+          ><span class="sr-only">{{ t('contact.whatsapp') }}</span>
           <Icon name="bxl:whatsapp" class="h-8 w-8"
         /></a>
 
-        <a href="#" :title="$t('contact.instagram')" class="text-gray-600 hover:text-gray-800"
-          ><span class="sr-only">{{ $t('contact.instagram') }}</span>
+        <a href="#" :title="t('contact.instagram')" class="text-gray-600 hover:text-gray-800"
+          ><span class="sr-only">{{ t('contact.instagram') }}</span>
           <Icon name="bxl:instagram" class="h-8 w-8"
         /></a>
 
-        <a href="#" :title="$t('contact.email')" class="text-gray-600 hover:text-gray-800"
-          ><span class="sr-only">{{ $t('contact.email') }}</span>
+        <a href="#" :title="t('contact.email')" class="text-gray-600 hover:text-gray-800"
+          ><span class="sr-only">{{ t('contact.email') }}</span>
           <Icon name="heroicons:envelope" class="h-8 w-8"
         /></a>
       </div>

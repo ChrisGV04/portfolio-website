@@ -30,8 +30,8 @@ const services: ServiceItem[] = [
   <section class="py-24 lg:py-32">
     <BaseContainer no-y-padding>
       <div class="flex flex-col">
-        <h2 class="text-h2 font-medium uppercase text-gray-900">{{ $t('home.services.title') }}</h2>
-        <span class="mt-4 text-body text-gray-700">{{ $t('home.services.subtext') }}</span>
+        <h2 class="text-h2 font-medium uppercase text-gray-900">{{ t('home.services.title') }}</h2>
+        <span class="mt-4 text-body text-gray-700">{{ t('home.services.subtext') }}</span>
       </div>
     </BaseContainer>
 

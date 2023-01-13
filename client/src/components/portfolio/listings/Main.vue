@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { t } = useI18n();
+</script>
 
 <template>
   <section class="overflow-x-hidden py-24 lg:py-32">
@@ -32,7 +34,9 @@
 
       <!-- Use real button -->
       <RouterLink to="/">
-        <BaseButton class="btn-primary" icon-right="heroicons-arrow-right">Ver proyecto</BaseButton>
+        <BaseButton class="btn-primary" icon-right="heroicons-arrow-right">{{
+          t('buttons.viewProject')
+        }}</BaseButton>
       </RouterLink>
     </BaseContainer>
   </section>

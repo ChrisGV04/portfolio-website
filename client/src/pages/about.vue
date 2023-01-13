@@ -6,6 +6,6 @@ useHead({ title: t('pageTitles.about') });
 <template>
   <main>
     <Body class="bg-gray-50" />
-    <h1>{{ $t('navigation.about') }}</h1>
+    <h1>{{ t('navigation.about') }}</h1>
   </main>
 </template>
