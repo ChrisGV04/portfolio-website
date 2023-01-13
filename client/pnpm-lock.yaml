@@ -5,7 +5,7 @@ specifiers:
   '@nuxtjs/i18n': 8.0.0-beta.7
   '@nuxtjs/tailwindcss': 6.2.0
   '@pinia/nuxt': 0.4.6
-  '@tailwindcss/typography': 0.5.9
+  '@tailwindcss/typography': ^0.5.9
   '@types/lodash.clonedeep': 4.5.7
   '@types/qs': 6.9.7
   '@vueuse/core': 9.10.0
