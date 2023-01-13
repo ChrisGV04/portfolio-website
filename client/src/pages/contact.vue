@@ -4,5 +4,8 @@ useHead({ title: t('pageTitles.contact') });
 </script>
 
 <template>
-  <h1>{{ $t('navigation.contact') }}</h1>
+  <main>
+    <Body class="bg-gray-50" />
+    <h1>{{ $t('navigation.contact') }}</h1>
+  </main>
 </template>

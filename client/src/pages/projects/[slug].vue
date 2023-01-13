@@ -6,8 +6,6 @@ import SimpleText from '~/components/portfolio/blocks/SimpleText.vue';
 import TextMedia from '~/components/portfolio/blocks/TextMedia.vue';
 import TextMobile from '~/components/portfolio/blocks/TextMobile.vue';
 
-definePageMeta({ layout: 'project' });
-
 const project: Project = {
   id: 'apjwsfeiowp',
   title: 'Nombre del proyecto',
@@ -166,9 +164,10 @@ const themeBg = computedEager(() => {
 </script>
 
 <template>
-  <Body :class="themeBg">
-    <PortfolioBlocksHero :project="project" />
+  <main>
+    <Body :class="themeBg" />
 
+    <PortfolioBlocksHero :project="project" />
     <component
       v-for="block in project.content"
       :key="block.id"
@@ -185,5 +184,5 @@ const themeBg = computedEager(() => {
           : TextMobile
       "
     />
-  </Body>
+  </main>
 </template>

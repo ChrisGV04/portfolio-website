@@ -11,7 +11,7 @@ function transitionAE() {
 
 <template>
   <Html>
-    <Body class="bg-gray-50 antialiased">
+    <Body class="antialiased transition-colors">
       <GlobalHeader />
       <NuxtPage
         :transition="{

@@ -4,5 +4,8 @@ useHead({ title: t('pageTitles.projects') });
 </script>
 
 <template>
-  <h1>{{ $t('navigation.projects') }}</h1>
+  <main>
+    <Body class="bg-gray-50" />
+    <h1>{{ $t('navigation.projects') }}</h1>
+  </main>
 </template>

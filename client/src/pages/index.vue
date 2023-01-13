@@ -4,7 +4,8 @@ useHead({ title: t('pageTitles.home') });
 </script>
 
 <template>
-  <main class="">
+  <main>
+    <Body class="bg-gray-50" />
     <HomeHeroSection />
     <HomeServicesSection />
     <HomePortfolioSection />
