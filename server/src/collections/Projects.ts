@@ -103,6 +103,32 @@ export const Projects: CollectionConfig = {
             },
           ],
         },
+
+        {
+          type: 'textarea',
+          name: 'summary',
+          label: 'Summary',
+          required: true,
+          admin: { rows: 3 },
+        },
+        {
+          type: 'array',
+          name: 'gallery',
+          label: 'Gallery',
+          maxRows: 5,
+          minRows: 3,
+          required: true,
+          labels: { singular: 'Image', plural: 'Images' },
+          fields: [
+            {
+              name: 'img',
+              type: 'upload',
+              label: 'Image',
+              required: true,
+              relationTo: Uploads.slug,
+            },
+          ],
+        },
       ],
     },
 

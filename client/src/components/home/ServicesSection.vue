@@ -1,29 +1,38 @@
 <script setup lang="ts">
+import { PropType } from 'vue';
+import { Homepage, Upload } from '~~/src/types/cms';
+
 interface ServiceItem {
   name: string;
   cat1: string;
   cat2: string;
+  img: Upload;
 }
 
 const { t } = useI18n();
 
-const services: ServiceItem[] = [
+const props = defineProps({ images: { type: Object as PropType<Homepage['services']>, required: true } });
+
+const services = computed<ServiceItem[]>(() => [
   {
     name: t('home.services.coding.title'),
     cat1: t('home.services.coding.cat1'),
     cat2: t('home.services.coding.cat2'),
+    img: props.images.codingImage,
   },
   {
     name: t('home.services.web.title'),
     cat1: t('home.services.web.cat1'),
     cat2: t('home.services.web.cat2'),
+    img: props.images.webImage,
   },
   {
     name: t('home.services.ecommerce.title'),
     cat1: t('home.services.ecommerce.cat1'),
     cat2: t('home.services.ecommerce.cat2'),
+    img: props.images.ecommerceImage,
   },
-];
+]);
 </script>
 
 <template>
@@ -43,7 +52,11 @@ const services: ServiceItem[] = [
         v-for="service in services"
         class="w-[calc(100vw-4rem)] max-w-[25rem] shrink-0 md:w-full md:max-w-none"
       >
-        <div class="aspect-4-5 w-full rounded-2xl bg-gray-300"></div>
+        <img
+          :src="service.img.url"
+          :alt="service.img.alt"
+          class="aspect-4-5 w-full rounded-2xl bg-gray-300 object-cover object-center"
+        />
 
         <div class="mt-4 flex flex-col">
           <h3 class="text-xl font-medium text-gray-900 lg:text-2xl">{{ service.name }}</h3>

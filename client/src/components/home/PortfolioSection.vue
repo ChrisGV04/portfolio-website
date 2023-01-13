@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { Project } from '~~/src/types/cms';
+
 const { t } = useI18n();
+
+defineProps({ projects: { type: Array<Project>, required: true } });
 </script>
 
 <template>
@@ -10,7 +14,6 @@ const { t } = useI18n();
       </h2>
     </BaseContainer>
 
-    <PortfolioListingsMain />
-    <PortfolioListingsMain />
+    <PortfolioListingsMain v-for="project in projects" :key="project.id" :project="project" />
   </section>
 </template>

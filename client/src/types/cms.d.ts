@@ -4,7 +4,7 @@ export interface Homepage {
     img: Upload;
     id: string;
   }[];
-  services?: {
+  services: {
     codingImage: Upload;
     webImage: Upload;
     ecommerceImage: Upload;
@@ -50,6 +50,8 @@ export interface Project {
   meta: {
     company: string;
     year: number;
+    summary: string;
+    gallery: { img: Upload; id: string }[];
   };
   content: (
     | ProjectSimpleTextBlock
