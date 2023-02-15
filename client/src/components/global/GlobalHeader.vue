@@ -20,13 +20,15 @@ const links = computed(() => [
 </script>
 
 <template>
-  <header class="fixed inset-x-0 top-0 z-30 mx-auto flex max-w-[95rem] justify-between p-4 lg:p-8">
-    <NuxtLink :to="localeRoute('/')">
+  <header
+    class="pointer-events-none fixed inset-x-0 top-0 z-30 mx-auto flex max-w-[95rem] justify-between p-4 lg:p-8"
+  >
+    <NuxtLink :to="localeRoute('/')" class="pointer-events-auto">
       <span class="sr-only">{{ t('navigation.home') }}</span>
       <img src="/logo/cgvweb-logo-box.webp" alt="CGV WEB Logo" class="w-14 md:w-20" />
     </NuxtLink>
 
-    <nav class="flex flex-col items-end space-y-3">
+    <nav class="pointer-events-auto flex flex-col items-end space-y-3">
       <NuxtLink
         :to="link.to"
         :key="link.to?.path"
