@@ -119,6 +119,7 @@ export const Projects: CollectionConfig = {
               required: true,
               admin: { rows: 3 },
               localized: true,
+              maxLength: 160,
             },
             {
               type: 'array',
