@@ -1,0 +1,49 @@
+limit_req_zone $binary_remote_addr zone=cgvweb-rate-limit:2m rate=10r/s;
+
+server {
+  server_name www.cgvweb.com;
+  return 301 $scheme://cgvweb.com$request_uri;
+}
+
+server {
+  server_name cgvweb.com;
+  client_max_body_size 26M;
+
+  # Client
+  location / {
+    # GZIP Config
+    gzip on;
+    gzip_vary on;
+    gzip_proxied no-cache no-store private expired auth;
+    gzip_comp_level 6;
+    gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+    gzip_types application/json application/javascript text/javascript;
+    gzip_disable "msie6";
+
+    proxy_pass http://localhost:8080/;
+  }
+
+  # Admin UI
+  location /admin {
+    proxy_pass http://localhost:3000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+
+  # API
+  location /api {
+    limit_req zone=cgvweb-rate-limit burst=12 delay=8;
+
+    proxy_pass http://localhost:3000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+
+  # Uploads
+  location /uploads {
+    proxy_pass http://localhost:3000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+}

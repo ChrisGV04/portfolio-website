@@ -2,5 +2,5 @@ node_modules
 dist
 *.zip
 .DS_Store
-pm2.js
+pm2.config.js
 Caddyfile
