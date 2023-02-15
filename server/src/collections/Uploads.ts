@@ -14,13 +14,8 @@ export const Uploads: CollectionConfig = {
     useAsTitle: 'alt',
   },
   upload: {
-    adminThumbnail: 'card',
     staticURL: '/uploads',
     staticDir: '../public/uploads',
-    formatOptions: {
-      format: 'webp',
-      options: { quality: 75 },
-    },
     mimeTypes: ['image/*', 'video/*'],
   },
   fields: [
