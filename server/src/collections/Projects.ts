@@ -17,6 +17,15 @@ export const Projects: CollectionConfig = {
   fields: [
     slugField('title'),
     {
+      hasMany: true,
+      required: true,
+      name: 'categories',
+      label: 'Categories',
+      type: 'relationship',
+      admin: { position: 'sidebar' },
+      relationTo: ProjectCategories.slug,
+    },
+    {
       type: 'upload',
       required: true,
       name: 'featuredMedia',
@@ -26,15 +35,6 @@ export const Projects: CollectionConfig = {
         position: 'sidebar',
         description: 'Either a photo or a video. Displayed with 2:1 aspect ratio',
       },
-    },
-    {
-      hasMany: true,
-      required: true,
-      name: 'categories',
-      label: 'Categories',
-      type: 'relationship',
-      admin: { position: 'sidebar' },
-      relationTo: ProjectCategories.slug,
     },
 
     {
@@ -46,7 +46,7 @@ export const Projects: CollectionConfig = {
             {
               type: 'text',
               name: 'title',
-              maxLength: 20,
+              maxLength: 60,
               label: 'Title',
               required: true,
               localized: true,
@@ -98,6 +98,7 @@ export const Projects: CollectionConfig = {
                   label: 'Company',
                   required: true,
                   maxLength: 30,
+                  localized: true,
                   admin: { width: '50%' },
                 },
                 {
@@ -117,6 +118,7 @@ export const Projects: CollectionConfig = {
               label: 'Summary',
               required: true,
               admin: { rows: 3 },
+              localized: true,
             },
             {
               type: 'array',
@@ -168,6 +170,7 @@ export const Projects: CollectionConfig = {
               type: 'upload',
               required: true,
               name: 'ogImage',
+              localized: true,
               label: 'OG Image',
               relationTo: Uploads.slug,
               admin: { description: 'OpenGraph image. Dimensions: 1200x630' },

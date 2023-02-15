@@ -11,7 +11,7 @@ defineProps({ project: { type: Object as PropType<Project>, required: true } });
 <template>
   <section class="overflow-x-hidden py-24 lg:py-32">
     <BaseContainer no-y-padding>
-      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
+      <div class="flex flex-col gap-4">
         <h3 class="flex-1 text-h2 font-medium uppercase text-gray-900">{{ project.title }}</h3>
 
         <p class="w-full max-w-lg whitespace-pre-line text-body text-gray-700">

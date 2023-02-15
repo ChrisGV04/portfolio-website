@@ -4,15 +4,16 @@ import FullscreenImg from '~/components/portfolio/blocks/FullscreenImg.vue';
 import SimpleText from '~/components/portfolio/blocks/SimpleText.vue';
 import TextMedia from '~/components/portfolio/blocks/TextMedia.vue';
 import TextMobile from '~/components/portfolio/blocks/TextMobile.vue';
-import type { Project, Paginated } from '~/types/cms';
+import type { Paginated, Project } from '~/types/cms';
 
 const env = useRuntimeConfig();
 const route = useRoute();
+const { locale } = useI18n();
 const slug = route.params.slug?.toString();
 
 const { data: project } = await useAsyncData(`project:${slug}`, async () => {
   const { docs } = await $fetch<Paginated<Project>>(
-    `${env.public.apiUrl}/projects?where[slug][equals]=${slug}`
+    `${env.public.apiUrl}/projects?where[slug][equals]=${slug}&locale=${locale.value}`
   );
   return docs[0];
 });

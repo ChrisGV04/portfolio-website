@@ -7,6 +7,7 @@ export const portfolioTextBlockFields: Field[] = [
     label: 'Title',
     required: true,
     maxLength: 120,
+    localized: true,
   },
   {
     type: 'textarea',
@@ -15,5 +16,6 @@ export const portfolioTextBlockFields: Field[] = [
     required: true,
     label: 'Body text',
     admin: { rows: 8 },
+    localized: true,
   },
 ];

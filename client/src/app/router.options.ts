@@ -7,7 +7,7 @@ export default <RouterConfig>{
         if (savedPos) resolve(savedPos);
         if (to.hash) resolve({ el: to.hash, behavior: 'smooth', top: 120 });
         resolve({ top: 0 });
-      }, 200);
+      }, 350);
     });
   },
 };

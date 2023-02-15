@@ -10,7 +10,7 @@ defineProps({ project: { type: Object as PropType<Project>, required: true } });
     <BaseContainer>
       <div class="flex items-end">
         <div class="flex-1">
-          <h1 class="max-w-2xl flex-1 text-h2 font-medium uppercase text-gray-900">{{ project.title }}</h1>
+          <h1 class="flex-1 text-h2 font-medium uppercase text-gray-900">{{ project.title }}</h1>
           <div class="mt-8 flex items-baseline gap-20 text-body text-gray-600">
             <span>{{ project.listing.company }} &middot; {{ project.listing.year }}</span>
             <span

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Homepage } from '../types/cms';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 useHead({ title: t('pageTitles.home') });
 
 const env = useRuntimeConfig();
-const { data } = await useFetch<Homepage>(`${env.public.apiUrl}/globals/homepage`);
+const { data } = await useFetch<Homepage>(`${env.public.apiUrl}/globals/homepage?locale=${locale.value}`);
 </script>
 
 <template>
