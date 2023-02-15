@@ -15,46 +15,6 @@ export const Projects: CollectionConfig = {
   admin: { group: 'Portfolio', useAsTitle: 'title' },
 
   fields: [
-    {
-      type: 'text',
-      name: 'title',
-      maxLength: 20,
-      label: 'Title',
-      required: true,
-      localized: true,
-    },
-    {
-      type: 'text',
-      name: 'url',
-      maxLength: 100,
-      label: 'Live URL',
-    },
-    {
-      type: 'select',
-      name: 'theme',
-      label: 'Theme color',
-      required: true,
-      defaultValue: 'gr',
-      options: [
-        { label: 'Gray', value: 'gr' },
-        { label: 'Red', value: 'rd' },
-        { label: 'Orange', value: 'or' },
-        { label: 'Amber', value: 'am' },
-        { label: 'Lime', value: 'lm' },
-        { label: 'Green', value: 'gn' },
-        { label: 'Emerald', value: 'em' },
-        { label: 'Teal', value: 'tl' },
-        { label: 'Cyan', value: 'cy' },
-        { label: 'Sky', value: 'sk' },
-        { label: 'Blue', value: 'bl' },
-        { label: 'Indigo', value: 'in' },
-        { label: 'Violet', value: 'vl' },
-        { label: 'Purple', value: 'pr' },
-        { label: 'Fuchsia', value: 'fc' },
-        { label: 'Pink', value: 'pn' },
-      ],
-    },
-
     slugField('title'),
     {
       type: 'upload',
@@ -78,73 +38,142 @@ export const Projects: CollectionConfig = {
     },
 
     {
-      type: 'group',
-      name: 'meta',
-      label: 'Metadata',
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          type: 'row',
+          label: 'General',
           fields: [
             {
               type: 'text',
-              name: 'company',
-              label: 'Company',
+              name: 'title',
+              maxLength: 20,
+              label: 'Title',
               required: true,
-              maxLength: 30,
-              admin: { width: '50%' },
+              localized: true,
             },
             {
-              type: 'number',
-              name: 'year',
-              label: 'Year',
+              type: 'text',
+              name: 'url',
+              maxLength: 100,
+              label: 'Live URL',
+            },
+            {
+              type: 'select',
+              name: 'theme',
+              label: 'Theme color',
               required: true,
-              admin: { width: '50%' },
-              defaultValue: new Date().getFullYear(),
+              defaultValue: 'gr',
+              options: [
+                { label: 'Gray', value: 'gr' },
+                { label: 'Red', value: 'rd' },
+                { label: 'Orange', value: 'or' },
+                { label: 'Amber', value: 'am' },
+                { label: 'Lime', value: 'lm' },
+                { label: 'Green', value: 'gn' },
+                { label: 'Emerald', value: 'em' },
+                { label: 'Teal', value: 'tl' },
+                { label: 'Cyan', value: 'cy' },
+                { label: 'Sky', value: 'sk' },
+                { label: 'Blue', value: 'bl' },
+                { label: 'Indigo', value: 'in' },
+                { label: 'Violet', value: 'vl' },
+                { label: 'Purple', value: 'pr' },
+                { label: 'Fuchsia', value: 'fc' },
+                { label: 'Pink', value: 'pn' },
+              ],
             },
           ],
-        },
+        }, // End general tab
 
         {
-          type: 'textarea',
-          name: 'summary',
-          label: 'Summary',
-          required: true,
-          admin: { rows: 3 },
-        },
-        {
-          type: 'array',
-          name: 'gallery',
-          label: 'Gallery',
-          maxRows: 5,
-          minRows: 3,
-          required: true,
-          labels: { singular: 'Image', plural: 'Images' },
+          label: 'Listing info',
+          name: 'listing',
           fields: [
             {
-              name: 'img',
-              type: 'upload',
-              label: 'Image',
+              type: 'row',
+              fields: [
+                {
+                  type: 'text',
+                  name: 'company',
+                  label: 'Company',
+                  required: true,
+                  maxLength: 30,
+                  admin: { width: '50%' },
+                },
+                {
+                  type: 'number',
+                  name: 'year',
+                  label: 'Year',
+                  required: true,
+                  admin: { width: '50%' },
+                  defaultValue: new Date().getFullYear(),
+                },
+              ],
+            },
+
+            {
+              type: 'textarea',
+              name: 'summary',
+              label: 'Summary',
               required: true,
+              admin: { rows: 3 },
+            },
+            {
+              type: 'array',
+              name: 'gallery',
+              label: 'Gallery',
+              maxRows: 5,
+              minRows: 3,
+              required: true,
+              labels: { singular: 'Image', plural: 'Images' },
+              fields: [
+                {
+                  name: 'img',
+                  type: 'upload',
+                  label: 'Image',
+                  required: true,
+                  relationTo: Uploads.slug,
+                },
+              ],
+            },
+          ],
+        }, // End listing tab
+
+        {
+          label: 'Layout',
+          fields: [
+            {
+              type: 'blocks',
+              name: 'content',
+              label: 'Content',
+              labels: { singular: 'Section', plural: 'Sections' },
+              minRows: 1,
+              maxRows: 10,
+              blocks: [
+                SimpleTextBlock,
+                TextMediaBlock,
+                TextMobileMediaBlock,
+                FullscreenImageBlock,
+                DesktopMediaBlock,
+              ],
+            },
+          ],
+        }, // End layout tab
+
+        {
+          label: 'SEO',
+          name: 'seo',
+          fields: [
+            {
+              type: 'upload',
+              required: true,
+              name: 'ogImage',
+              label: 'OG Image',
               relationTo: Uploads.slug,
+              admin: { description: 'OpenGraph image. Dimensions: 1200x630' },
             },
           ],
         },
-      ],
-    },
-
-    {
-      type: 'blocks',
-      name: 'content',
-      label: 'Content',
-      labels: { singular: 'Section', plural: 'Sections' },
-      minRows: 1,
-      maxRows: 10,
-      blocks: [
-        SimpleTextBlock,
-        TextMediaBlock,
-        TextMobileMediaBlock,
-        FullscreenImageBlock,
-        DesktopMediaBlock,
       ],
     },
   ],
