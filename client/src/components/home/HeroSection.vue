@@ -33,7 +33,7 @@ const columns = computed(() => {
 <template>
   <section class="relative z-0 h-screen min-h-[32rem] overflow-hidden">
     <div
-      class="absolute bottom-0 left-0 z-10 hidden h-[50vh] max-h-80 w-screen bg-gradient-to-t from-gray-50 to-transparent sm:block"
+      class="absolute bottom-0 left-0 z-10 hidden h-[50vh] w-screen bg-gradient-to-t from-gray-50 to-transparent sm:block sm:max-h-80"
     />
 
     <div class="absolute inset-0 -z-10 opacity-70">
@@ -50,7 +50,7 @@ const columns = computed(() => {
       </BaseContainer>
     </div>
 
-    <BaseContainer no-y-padding class="relative flex h-full items-center pb-8 sm:items-end">
+    <BaseContainer no-y-padding class="relative flex h-full items-end pb-16 md:pb-8">
       <div class="z-10 w-full">
         <h1 class="text-center uppercase leading-none text-gray-900">
           <span class="block text-[min(5.5vw,4.5rem)]">{{ t('home.hero.line1') }}</span>
