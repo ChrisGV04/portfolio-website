@@ -24,7 +24,7 @@ export interface Homepage {
     webImage: Upload;
     ecommerceImage: Upload;
   };
-  featProjects: Project[];
+  featProjects?: Project[];
 }
 export interface Upload {
   id: string;

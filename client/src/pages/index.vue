@@ -13,6 +13,6 @@ const { data } = await useFetch<Homepage>(`${env.public.apiUrl}/globals/homepage
     <Body class="bg-gray-50" />
     <HomeHeroSection :gallery="data.heroGallery" />
     <HomeServicesSection :images="data.services" />
-    <HomePortfolioSection :projects="data.featProjects" />
+    <HomePortfolioSection v-if="data.featProjects" :projects="data.featProjects" />
   </main>
 </template>
