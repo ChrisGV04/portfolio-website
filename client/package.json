@@ -8,22 +8,23 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@headlessui/vue": "1.7.7",
+    "@headlessui/vue": "1.7.9",
     "@nuxtjs/i18n": "8.0.0-beta.7",
-    "@nuxtjs/tailwindcss": "6.2.0",
+    "@nuxtjs/tailwindcss": "6.4.0",
     "@pinia/nuxt": "0.4.6",
     "@tailwindcss/typography": "0.5.9",
     "@types/lodash.clonedeep": "4.5.7",
+    "@types/node": "^18.13.0",
     "@types/qs": "6.9.7",
-    "@vueuse/core": "9.10.0",
-    "@vueuse/nuxt": "9.10.0",
+    "@vueuse/core": "9.12.0",
+    "@vueuse/nuxt": "9.12.0",
     "gsap": "3.11.4",
     "lodash.clonedeep": "4.5.0",
-    "nuxt": "3.0.0",
-    "nuxt-icon": "0.2.3",
-    "pinia": "2.0.28",
-    "prettier": "2.8.2",
-    "prettier-plugin-tailwindcss": "0.2.1",
+    "nuxt": "3.2.0",
+    "nuxt-icon": "0.2.11",
+    "pinia": "2.0.30",
+    "prettier": "2.8.4",
+    "prettier-plugin-tailwindcss": "0.2.2",
     "qs": "6.11.0"
   }
 }
