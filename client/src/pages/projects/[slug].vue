@@ -21,6 +21,12 @@ const { data: project } = await useAsyncData(`project:${slug}`, async () => {
 if (!project.value) throw createError({ statusCode: 404 });
 
 useHead({ title: project.value!.title });
+useSeoMeta({
+  ogTitle: `CGV WEB - ${project.value.title}`,
+  ogDescription: project.value.listing.summary,
+  ogImage: project.value.seo.ogImage.url,
+  ogImageAlt: project.value.seo.ogImage.alt,
+});
 
 const themeBg = computedEager(() => {
   switch (project.value!.theme) {
