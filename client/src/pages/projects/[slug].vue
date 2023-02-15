@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { Project } from '~/types/cms';
 import DesktopMedia from '~/components/portfolio/blocks/DesktopMedia.vue';
 import FullscreenImg from '~/components/portfolio/blocks/FullscreenImg.vue';
 import SimpleText from '~/components/portfolio/blocks/SimpleText.vue';
 import TextMedia from '~/components/portfolio/blocks/TextMedia.vue';
 import TextMobile from '~/components/portfolio/blocks/TextMobile.vue';
+import type { Project } from '~/types/cms';
 
 const project: Project = {
   id: 'apjwsfeiowp',
   title: 'Nombre del proyecto',
   slug: 'nombre-proyecto',
   url: 'https://chrisgvdev.com',
-  meta: { company: 'CGV WEB', year: 2022 },
+  meta: { company: 'CGV WEB', year: 2022, summary: '', gallery: [] },
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
   theme: 'pn',
