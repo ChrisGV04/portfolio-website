@@ -74,7 +74,6 @@ export const HomePage: GlobalConfig = {
               relationTo: Projects.slug,
               name: 'featProjects',
               hasMany: true,
-              required: true,
             },
           ],
         }, // End projects tab
