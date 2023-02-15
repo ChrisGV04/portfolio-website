@@ -25,7 +25,7 @@ export default buildConfig({
     user: Users.slug,
     meta: {
       titleSuffix: '- CGV WEB',
-      favicon: '/logo/favicon.png',
+      favicon: '/admin-res/logo/favicon.png',
     },
     components: {
       graphics: { Logo, Icon },
