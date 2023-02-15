@@ -40,6 +40,7 @@ export interface Upload {
 }
 export interface Project {
   id: string;
+  slug: string;
   title: string;
   url?: string;
   theme:
@@ -59,14 +60,16 @@ export interface Project {
     | 'pr'
     | 'fc'
     | 'pn';
-  slug: string;
   featuredMedia: Upload;
   categories: ProjectCategory[];
-  meta: {
+  listing: {
     company: string;
     year: number;
     summary: string;
-    gallery: { img: Upload; id: string }[];
+    gallery: {
+      id: string;
+      img: Upload;
+    }[];
   };
   content: (
     | ProjectSimpleTextBlock
@@ -75,6 +78,7 @@ export interface Project {
     | ProjectFullscreenImgBlock
     | ProjectDesktopMediaBlock
   )[];
+  seo: { ogImage: Upload };
   createdAt: string;
   updatedAt: string;
 }

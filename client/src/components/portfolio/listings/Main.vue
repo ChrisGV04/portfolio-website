@@ -14,7 +14,9 @@ defineProps({ project: { type: Object as PropType<Project>, required: true } });
       <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
         <h3 class="flex-1 text-h2 font-medium uppercase text-gray-900">{{ project.title }}</h3>
 
-        <p class="w-full max-w-lg whitespace-pre-line text-body text-gray-700">{{ project.meta.summary }}</p>
+        <p class="w-full max-w-lg whitespace-pre-line text-body text-gray-700">
+          {{ project.listing.summary }}
+        </p>
       </div>
     </BaseContainer>
 
@@ -26,7 +28,7 @@ defineProps({ project: { type: Object as PropType<Project>, required: true } });
       <img
         :src="item.img.url"
         :alt="item.img.alt"
-        v-for="item in project.meta.gallery"
+        v-for="item in project.listing.gallery"
         class="aspect-long-img w-[calc(100vw-4rem)] max-w-md shrink-0 snap-center rounded-2xl bg-gray-200 object-cover object-center lg:snap-align-none"
       />
     </BaseContainer>

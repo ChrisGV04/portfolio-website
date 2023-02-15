@@ -12,7 +12,7 @@ defineProps({ project: { type: Object as PropType<Project>, required: true } });
         <div class="flex-1">
           <h1 class="max-w-2xl flex-1 text-h2 font-medium uppercase text-gray-900">{{ project.title }}</h1>
           <div class="mt-8 flex items-baseline gap-20 text-body text-gray-600">
-            <span>{{ project.meta.company }} &middot; {{ project.meta.year }}</span>
+            <span>{{ project.listing.company }} &middot; {{ project.listing.year }}</span>
             <span
               ><template v-for="(category, idx) in project.categories"
                 >{{ category.title }}{{ idx !== project.categories.length - 1 ? ' &middot; ' : '' }}</template
