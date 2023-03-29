@@ -3,29 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .btn {
-    @apply rounded-lg font-semibold uppercase transition-all duration-100 hover:cursor-pointer disabled:cursor-not-allowed;
-  }
-
-  .btn-primary {
-    @apply bg-gray-800 text-white hover:opacity-80 focus:ring-gray-800 disabled:opacity-30;
-  }
 }
 
 @layer utilities {
-  .btn-rings {
-    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
-  }
-
-  .btn-regular {
-    @apply px-4 py-2;
-  }
-
-  .btn-dense {
-    @apply px-2 py-1;
-  }
-
-  .btn-lg {
-    @apply p-5;
-  }
 }

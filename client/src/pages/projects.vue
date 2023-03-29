@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const { t } = useI18n();
-useHead({ title: t('pageTitles.contact') });
+useHead({ title: t('pageTitles.projects') });
 </script>
 
 <template>
   <main>
-    <h1>{{ t('navigation.contact') }}</h1>
+    <h1>{{ t('navigation.projects') }}</h1>
   </main>
 </template>

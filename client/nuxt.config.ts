@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   srcDir: 'src',
 
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@vueuse/nuxt', 'nuxt-icon', '@nuxtjs/i18n'],
+  modules: ['@nuxtjs/tailwindcss', '@vueuse/nuxt', 'nuxt-icon', '@nuxtjs/i18n'],
 
   app: {
     head: {
@@ -11,15 +11,8 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', href: '/favicon.png' },
         { rel: 'stylesheet', href: 'https://api.fontshare.com/v2/css?f[]=switzer@1&display=swap' },
       ],
-
-      meta: [
-        { property: 'og:type', content: 'Website' },
-        { property: 'og:title', content: 'Desarrollo Web - CGV WEB' },
-      ],
     },
   },
-
-  imports: { dirs: ['stores'] },
 
   runtimeConfig: {
     public: {
@@ -37,17 +30,16 @@ export default defineNuxtConfig({
       { code: 'en', file: 'en.json' },
     ],
 
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n',
-      redirectOn: 'root',
-    },
+    detectBrowserLanguage: false,
 
     vueI18n: {
       legacy: false,
       locale: 'es',
     },
   },
+
+  build: { transpile: ['gsap'] },
+  components: [{ path: '~/components', pathPrefix: false }],
 
   typescript: {
     strict: true,
