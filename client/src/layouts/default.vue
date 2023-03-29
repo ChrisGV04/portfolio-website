@@ -5,7 +5,9 @@ const { locale } = useI18n();
 <template>
   <div class="flex min-h-screen flex-col">
     <Html :lang="locale" />
-    <Body class="antialiased transition-colors" />
+    <Body class="bg-gray-900 antialiased" />
+
+    <GlobalHeader />
 
     <NuxtPage class="flex-1" />
   </div>

@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -10,6 +12,9 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Switzer', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        gray: colors.neutral,
       },
     },
   },
