@@ -5,13 +5,17 @@ const localeRoute = useLocaleRoute();
 <template>
   <footer>
     <BaseContainer no-y-padding>
-      <div class="flex justify-between gap-8 py-24">
-        <h3 class="max-w-3xl text-7xl text-white">
-          <div class="inline-flex h-16 w-16 translate-y-2 transform rounded-full bg-gray-600"></div>
+      <div class="flex flex-col gap-8 py-24 lg:flex-row lg:justify-between">
+        <h3
+          class="max-w-md text-4xl text-white sm:text-5xl md:max-w-2xl md:text-6xl lg:max-w-3xl lg:text-7xl"
+        >
+          <div
+            class="inline-flex h-10 w-10 translate-y-2 transform rounded-full bg-gray-600 sm:h-12 sm:w-12 md:h-16 md:w-16"
+          ></div>
           Comencemos tu proyecto hoy mismo
         </h3>
 
-        <div class="relative">
+        <div class="relative ml-auto lg:m-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="absolute right-[calc(100%+1rem)] top-3/4 w-14"
@@ -26,19 +30,21 @@ const localeRoute = useLocaleRoute();
 
           <NuxtLink
             :to="localeRoute('/')"
-            class="grid h-52 w-52 place-items-center rounded-full bg-blue-600 text-lg font-medium text-white"
-            >Contáctanos</NuxtLink
+            class="grid h-40 w-40 place-items-center rounded-full bg-blue-600 text-lg font-medium text-white lg:h-52 lg:w-52"
+            >Contáctame</NuxtLink
           >
         </div>
       </div>
 
-      <div class="flex justify-between gap-6 py-16">
+      <div
+        class="flex flex-col-reverse gap-6 divide-y divide-y-reverse divide-white/10 py-16 sm:flex-row sm:justify-between sm:divide-y-0"
+      >
         <div class="flex flex-col">
           <span class="text-sm font-semibold uppercase text-white opacity-70">Copyright</span>
           <span class="text-white">{{ new Date().getFullYear() }} &copy; CGV WEB</span>
         </div>
 
-        <div class="flex flex-col">
+        <div class="flex flex-col pb-6 sm:pb-0">
           <span class="text-sm font-semibold uppercase text-white opacity-70">Redes sociales</span>
 
           <div role="list" class="flex space-x-5">
