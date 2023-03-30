@@ -10,5 +10,7 @@ const { locale } = useI18n();
     <GlobalHeader />
 
     <NuxtPage class="flex-1" />
+
+    <GlobalFooter />
   </div>
 </template>
