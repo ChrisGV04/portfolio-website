@@ -65,9 +65,11 @@ watch(isMobile, (mobile) => {
           <Icon name="heroicons:bars-2-20-solid" class="h-5 w-5 text-white" />
         </button>
 
-        <Teleport to="body">
-          <GlobalMobileNavigation @close="mobileMenuOpen = false" :show="mobileMenuOpen" />
-        </Teleport>
+        <ClientOnly>
+          <Teleport to="body">
+            <GlobalMobileNavigation @close="mobileMenuOpen = false" :show="mobileMenuOpen" />
+          </Teleport>
+        </ClientOnly>
       </div>
     </BaseContainer>
   </header>
