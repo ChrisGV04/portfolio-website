@@ -7,5 +7,6 @@ useHead({ title: t('pageTitles.home') });
   <main>
     <HomeHeroSection />
     <HomeAboutSection />
+    <HomePortfolioSection />
   </main>
 </template>
