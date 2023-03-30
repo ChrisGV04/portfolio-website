@@ -11,7 +11,7 @@ function setCookie(lang: string) {
 
 // MOBILE MENU
 const bp = useBreakpoints(breakpointsTailwind);
-const isMobile = bp.smaller('lg');
+const isMobile = bp.smaller('xl');
 const mobileMenuOpen = ref(false);
 
 watch(isMobile, (mobile) => {
@@ -29,7 +29,7 @@ watch(isMobile, (mobile) => {
       </div>
 
       <div>
-        <nav class="hidden lg:flex lg:flex-col lg:items-end lg:space-y-3">
+        <nav class="hidden xl:flex xl:flex-col xl:items-end xl:space-y-3">
           <NuxtLink class="navlink" :to="localeRoute('/projects')">Proyectos</NuxtLink>
           <NuxtLink class="navlink" :to="localeRoute('/contact')">Contacto</NuxtLink>
 
@@ -59,7 +59,7 @@ watch(isMobile, (mobile) => {
         <button
           type="button"
           @click="mobileMenuOpen = true"
-          class="grid h-10 w-10 place-items-center rounded-full bg-gray-600 lg:hidden"
+          class="grid h-10 w-10 place-items-center rounded-full bg-gray-600 xl:hidden"
         >
           <span class="sr-only">Abrir menú</span>
           <Icon name="heroicons:bars-2-20-solid" class="h-5 w-5 text-white" />
