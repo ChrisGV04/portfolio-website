@@ -5,7 +5,7 @@ const localeRoute = useLocaleRoute();
 <template>
   <footer>
     <BaseContainer no-y-padding>
-      <div class="flex flex-col gap-8 py-24 lg:flex-row lg:justify-between">
+      <div class="flex flex-col gap-8 py-12 lg:flex-row lg:justify-between lg:py-24">
         <h3
           class="max-w-md text-4xl text-white sm:text-5xl md:max-w-2xl md:text-6xl lg:max-w-3xl lg:text-7xl"
         >
