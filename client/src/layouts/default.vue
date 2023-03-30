@@ -7,6 +7,12 @@ const { locale } = useI18n();
     <Html :lang="locale" />
     <Body class="bg-gray-900 antialiased" />
 
+    <DevOnly>
+      <ClientOnly>
+        <DevBreakpointsViewer />
+      </ClientOnly>
+    </DevOnly>
+
     <GlobalHeader />
 
     <NuxtPage class="flex-1" />
