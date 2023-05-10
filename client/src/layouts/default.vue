@@ -68,7 +68,7 @@ provide(transitionsKey, () => ({
 
     <DevOnly>
       <ClientOnly>
-        <DevBreakpointsViewer />
+        <UiBreakpointViewer />
       </ClientOnly>
     </DevOnly>
 

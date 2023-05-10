@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   srcDir: 'src',
 
-  modules: ['@nuxtjs/tailwindcss', '@vueuse/nuxt', 'nuxt-icon', '@nuxtjs/i18n'],
+  modules: ['@cgv.web/nuxt-ui', '@nuxtjs/tailwindcss', '@vueuse/nuxt', 'nuxt-icon', '@nuxtjs/i18n'],
 
   app: {
     head: {
@@ -40,6 +40,7 @@ export default defineNuxtConfig({
   },
 
   build: { transpile: ['gsap'] },
+  tailwindcss: { viewer: false },
   components: [{ path: '~/components', pathPrefix: false }],
 
   typescript: {
