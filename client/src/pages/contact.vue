@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n();
-useHead({ title: t('pageTitles.contact') });
+useHead({ title: t('general.getInTouch') });
 </script>
 
 <template>

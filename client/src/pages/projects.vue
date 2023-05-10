@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n();
-useHead({ title: t('pageTitles.projects') });
+useHead({ title: t('navigation.projects') });
 </script>
 
 <template>

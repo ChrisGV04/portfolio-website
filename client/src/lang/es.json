@@ -1,55 +1,59 @@
 {
-  "navigation": {
-    "home": "Inicio",
-    "projects": "Proyectos",
-    "about": "Sobre mí",
-    "contact": "Contacto"
+  "general": {
+    "all": "Todo",
+    "year": "Año",
+    "name": "CGV WEB",
+    "social": "Social",
+    "webApp": "App web",
+    "webApps": "Apps web",
+    "customer": "Cliente",
+    "viewAll": "Ver todos",
+    "services": "Servicios",
+    "copyright": "Copyright",
+    "website": "Sitio web",
+    "websites": "Sitios web",
+    "getInTouch": "Contáctame",
+    "information": "Información",
+    "ecommerce": "Tienda en línea",
+    "ecommerces": "Tiendas en línea",
+    "socialMedia": "Redes sociales",
+    "contactMethods": "Medios de contacto",
+    "featuredProjects": "Proyectos destacados"
   },
 
-  "buttons": {
-    "viewProject": "Ver proyecto",
-    "viewLive": "Ver en vivo"
-  },
-
-  "pageTitles": {
-    "home": "Diseño y Desarrollo Web",
-    "projects": "Proyectos Destacados",
-    "about": "Sobre Mí",
-    "contact": "Contáctame"
-  },
-
-  "home": {
-    "hero": {
-      "line1": "Diseño y Desarrollo Web",
-      "line2": "Personalizado"
-    },
-
-    "services": {
-      "title": "Servicios digitales",
-      "subtext": "Conoce lo que ofrezco y como te puedo ayudar.",
-      "coding": {
-        "title": "Programación Desde Cero",
-        "cat1": "Plataformas",
-        "cat2": "Apps Web"
-      },
-      "web": {
-        "title": "Diseño y Desarrollo Web",
-        "cat1": "Páginas Web",
-        "cat2": "Landing Pages"
-      },
-      "ecommerce": {
-        "title": "Tiendas en Línea",
-        "cat1": "Ecommerce",
-        "cat2": "Catálogos"
-      }
-    },
-
-    "featuredProjects": "Proyectos Destacados"
-  },
-
-  "contact": {
+  "findMeOn": {
+    "github": "Encuéntrame en Github",
     "whatsapp": "Escríbeme en WhatsApp",
-    "instagram": "Sígueme en Instagram",
-    "email": "Escríbeme por correo electrónico"
+    "instagram": "Encuéntrame en Instagram"
+  },
+
+  "navigation": {
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "english": "Change to english",
+    "spanish": "Cambiar a español",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+
+  "footer": {
+    "title": "Comencemos tu proyecto hoy mismo"
+  },
+
+  "homePage": {
+    "heroTitle": "Diseño web personalizado",
+
+    "about": {
+      "title": "Creando proyectos que dejan impacto. Llevemos tu negocio al siguiente nivel con un sitio web profesional y moderno.",
+      "body": "Soy Christian Gil, diseñador y desarrollador de software para la web ubicado en Guadalajara, Jalisco, México.\n\n Te ayudaré a que tu negocio luzca increíble con su sitio web y a desarrollar aplicaciones para la nube."
+    }
+  },
+
+  "projectsPage": {
+    "heroTitle": "Creando proyectos modernos"
+  },
+
+  "contactPage": {
+    "heroTitle": "Trabajemos juntos en tu proyecto"
   }
 }

@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 const props = defineProps({ show: Boolean });
 defineEmits(['close']);
 
+const { t } = useI18n();
 const i18nCookie = useCookie('i18n');
 const localeRoute = useLocaleRoute();
 const switchLocale = useSwitchLocalePath();
@@ -69,16 +70,16 @@ watch(
         @click="$emit('close')"
         class="absolute right-4 top-6 grid h-10 w-10 place-items-center rounded-full bg-gray-900 sm:right-6 sm:top-8"
       >
-        <span class="sr-only">Cerrar menú</span>
+        <span class="sr-only">{{ t('navigation.closeMenu') }}</span>
         <Icon name="heroicons:x-mark-20-solid" class="h-5 w-5 text-white" />
       </button>
 
       <nav class="flex flex-col space-y-4">
         <div class="overflow-hidden py-2">
-          <NuxtLink class="menu-link" :to="localeRoute('/projects')">Proyectos</NuxtLink>
+          <NuxtLink class="menu-link" :to="localeRoute('/projects')">{{ t('navigation.projects') }}</NuxtLink>
         </div>
         <div class="overflow-hidden py-2">
-          <NuxtLink class="menu-link" :to="localeRoute('/contact')">Contacto</NuxtLink>
+          <NuxtLink class="menu-link" :to="localeRoute('/contact')">{{ t('navigation.contact') }}</NuxtLink>
         </div>
 
         <div class="flex space-x-5 overflow-hidden">
@@ -88,7 +89,8 @@ watch(
               @click="() => setCookie('en')"
               :class="['menu-link', isActive ? 'font-bold' : 'opacity-40 hover:opacity-100']"
             >
-              En<span class="sr-only">glish</span>
+              <span aria-hidden="true">En</span>
+              <span class="sr-only">{{ t('navigation.english') }}</span>
             </a>
           </NuxtLink>
 
@@ -98,7 +100,8 @@ watch(
               @click="() => setCookie('es')"
               :class="['menu-link', isActive ? 'font-bold' : 'opacity-40 hover:opacity-100']"
             >
-              Es<span class="sr-only">pañol</span>
+              <span aria-hidden="true">Es</span>
+              <span class="sr-only">{{ t('navigation.spanish') }}</span>
             </a>
           </NuxtLink>
         </div>

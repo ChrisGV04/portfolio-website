@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n();
 const localeRoute = useLocaleRoute();
 </script>
 
@@ -12,15 +13,16 @@ const localeRoute = useLocaleRoute();
           <div
             class="inline-flex h-10 w-10 translate-y-2 transform rounded-full bg-gray-600 sm:h-12 sm:w-12 md:h-16 md:w-16"
           ></div>
-          Comencemos tu proyecto hoy mismo
+          {{ t('footer.title') }}
         </h3>
 
         <div class="relative ml-auto lg:m-0">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="absolute right-[calc(100%+1rem)] top-3/4 w-14"
             fill="none"
             viewBox="0 0 54 46"
+            role="presentation"
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute right-[calc(100%+1rem)] top-3/4 w-14"
           >
             <path
               fill="#fff"
@@ -31,7 +33,7 @@ const localeRoute = useLocaleRoute();
           <NuxtLink
             :to="localeRoute('/')"
             class="grid h-40 w-40 place-items-center rounded-full bg-blue-600 text-lg font-medium text-white lg:h-52 lg:w-52"
-            >Contáctame</NuxtLink
+            >{{ t('general.getInTouch') }}</NuxtLink
           >
         </div>
       </div>
@@ -40,17 +42,30 @@ const localeRoute = useLocaleRoute();
         class="flex flex-col-reverse gap-6 divide-y divide-y-reverse divide-white/10 py-16 sm:flex-row sm:justify-between sm:divide-y-0"
       >
         <div class="flex flex-col">
-          <span class="text-sm font-semibold uppercase text-white opacity-70">Copyright</span>
-          <span class="text-white">{{ new Date().getFullYear() }} &copy; CGV WEB</span>
+          <span class="text-sm font-semibold uppercase text-white opacity-70">{{
+            t('general.copyright')
+          }}</span>
+          <span class="text-white">{{ new Date().getFullYear() }} &copy; {{ t('general.name') }}</span>
         </div>
 
         <div class="flex flex-col pb-6 sm:pb-0">
-          <span class="text-sm font-semibold uppercase text-white opacity-70">Redes sociales</span>
+          <span class="text-sm font-semibold uppercase text-white opacity-70">{{
+            t('general.socialMedia')
+          }}</span>
 
           <div role="list" class="flex space-x-5">
-            <a href="#" class="text-white hover:opacity-70">Instagram</a>
-            <a href="#" class="text-white hover:opacity-70">Github</a>
-            <a href="#" class="text-white hover:opacity-70">WhatsApp</a>
+            <a href="#" class="text-white hover:opacity-70">
+              <span aria-hidden="true">Instagram</span>
+              <span class="sr-only">{{ t('findMeOn.instagram') }}</span>
+            </a>
+            <a href="#" class="text-white hover:opacity-70">
+              <span aria-hidden="true">Github</span>
+              <span class="sr-only">{{ t('findMeOn.github') }}</span>
+            </a>
+            <a href="#" class="text-white hover:opacity-70">
+              <span aria-hidden="true">WhatsApp</span>
+              <span class="sr-only">{{ t('findMeOn.whatsapp') }}</span>
+            </a>
           </div>
         </div>
       </div>

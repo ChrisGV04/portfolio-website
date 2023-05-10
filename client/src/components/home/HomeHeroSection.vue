@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { gsap, SplitText } from 'gsap/all';
 
+const { t } = useI18n();
+
 const transition = useTransitionStore();
 
 function createRevealAnimation() {
@@ -45,7 +47,7 @@ onMounted(async () => {
   <section id="home-hero" class="relative z-0 overflow-hidden">
     <BaseContainer no-y-padding class="flex h-screen items-center justify-center md:items-end">
       <h1 class="mb-10 text-center text-[clamp(2rem,10vw,8.75rem)] uppercase leading-none text-white">
-        Diseño web personalizado
+        {{ t('homePage.heroTitle') }}
       </h1>
     </BaseContainer>
 

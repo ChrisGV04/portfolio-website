@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { breakpointsTailwind } from '@vueuse/core';
 
+const { t } = useI18n();
 const i18nCookie = useCookie('i18n');
 const localeRoute = useLocaleRoute();
 const switchLocale = useSwitchLocalePath();
@@ -30,8 +31,8 @@ watch(isMobile, (mobile) => {
 
       <div>
         <nav class="hidden xl:flex xl:flex-col xl:items-end xl:space-y-3">
-          <NuxtLink class="navlink" :to="localeRoute('/projects')">Proyectos</NuxtLink>
-          <NuxtLink class="navlink" :to="localeRoute('/contact')">Contacto</NuxtLink>
+          <NuxtLink class="navlink" :to="localeRoute('/projects')">{{ t('navigation.projects') }}</NuxtLink>
+          <NuxtLink class="navlink" :to="localeRoute('/contact')">{{ t('navigation.contact') }}</NuxtLink>
 
           <div class="flex space-x-5">
             <NuxtLink custom :to="switchLocale('en')" v-slot="{ isActive, href }">
@@ -40,7 +41,8 @@ watch(isMobile, (mobile) => {
                 @click="() => setCookie('en')"
                 :class="['navlink', isActive ? 'font-bold' : 'opacity-40 hover:opacity-100']"
               >
-                En<span class="sr-only">glish</span>
+                <span aria-hidden="true">En</span>
+                <span class="sr-only">{{ t('navigation.english') }}</span>
               </a>
             </NuxtLink>
 
@@ -50,7 +52,8 @@ watch(isMobile, (mobile) => {
                 @click="() => setCookie('es')"
                 :class="['navlink', isActive ? 'font-bold' : 'opacity-40 hover:opacity-100']"
               >
-                Es<span class="sr-only">pañol</span>
+                <span aria-hidden="true">Es</span>
+                <span class="sr-only">{{ t('navigation.spanish') }}</span>
               </a>
             </NuxtLink>
           </div>
@@ -61,7 +64,7 @@ watch(isMobile, (mobile) => {
           @click="mobileMenuOpen = true"
           class="grid h-10 w-10 place-items-center rounded-full bg-gray-600 xl:hidden"
         >
-          <span class="sr-only">Abrir menú</span>
+          <span class="sr-only">{{ t('navigation.openMenu') }}</span>
           <Icon name="heroicons:bars-2-20-solid" class="h-5 w-5 text-white" />
         </button>
 
