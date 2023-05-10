@@ -22,8 +22,8 @@ function createRevealAnimation() {
       split.words,
       {
         y: '50%',
-        skewX: '-20deg',
         opacity: 0,
+        skewX: '-10deg',
         ease: 'expo.out',
         stagger: 0.08,
         duration: 1,
