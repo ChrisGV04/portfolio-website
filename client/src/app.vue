@@ -6,33 +6,15 @@ if (process.client) gsap.registerPlugin(SplitText);
 
 const { locale } = useI18n();
 
-/** ANIMATION */
-let transitionTimeline: gsap.core.Timeline | null = null;
-const animationMode = ref<'landing' | 'transition'>('landing');
-const isAnimatingTransition = ref(false);
-const lockScroll = ref(true);
+/* ANIMATION */
+const app = useNuxtApp();
+const lockScroll = ref(false);
+const transition = useTransitionStore();
 
 function createLandingReveal() {
-  lockScroll.value = true;
-  animationMode.value = 'landing';
-  isAnimatingTransition.value = true;
-
-  transitionTimeline = gsap.timeline({
-    paused: true,
-    onComplete() {
-      transitionTimeline?.kill();
-      transitionTimeline = null;
-      isAnimatingTransition.value = false;
-    },
-  });
-
-  transitionTimeline.to('#headerWrap', {
-    opacity: 1,
-    duration: 2,
-    onComplete() {
-      lockScroll.value = false;
-    },
-  });
+  transition.mode = 'landing';
+  transition.createTimeline();
+  transition.timeline!.to('#headerWrap', { opacity: 1, duration: 2 });
 }
 
 function startTransition(_: unknown, done: Function) {
@@ -48,17 +30,9 @@ onMounted(() => {
   createLandingReveal();
 });
 
-const app = useNuxtApp();
 app.hook('page:finish', () => {
-  console.log('Mounted transition?', !!transitionTimeline);
-  if (process.client && transitionTimeline) transitionTimeline.play();
+  if (process.client) transition.timeline?.play();
 });
-
-provide(transitionsKey, () => ({
-  mode: animationMode,
-  timeline: transitionTimeline,
-  isAnimating: isAnimatingTransition,
-}));
 </script>
 
 <template>

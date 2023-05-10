@@ -25,7 +25,7 @@ function playReveal() {
     },
   });
 
-  tl.fromTo(wrapperRef.value, { y: '-100%' }, { y: 0, duration: 0.3, ease: 'expo.out' });
+  tl.fromTo(wrapperRef.value, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'expo.out' });
   tl.fromTo('a.menu-link', { y: '100%' }, { y: 0, duration: 0.6, stagger: 0.1, ease: 'back.out(1.4)' });
 }
 
@@ -40,7 +40,7 @@ function hideMenu() {
   });
 
   tl.to('a.menu-link', { y: '100%', duration: 0.4, stagger: 0.05, ease: 'expo.out' });
-  tl.to(wrapperRef.value, { y: '-100%', duration: 0.3, ease: 'expo.out' });
+  tl.to(wrapperRef.value, { opacity: 0, duration: 0.8, ease: 'expo.out' });
 }
 
 watch(

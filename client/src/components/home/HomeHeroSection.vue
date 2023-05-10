@@ -1,23 +1,21 @@
 <script setup lang="ts">
 import { gsap, SplitText } from 'gsap/all';
 
-const getTransition = inject(transitionsKey, undefined, false);
+const transition = useTransitionStore();
 
 function createRevealAnimation() {
   const tl = gsap.timeline({
     onComplete() {
-      ctx?.revert();
+      tl.revert();
     },
   });
 
-  const ctx = gsap.context(() => {
+  gsap.context(() => {
     const split = new SplitText('h1', {
       type: 'words,lines',
       linesClass: 'overflow-hidden',
     });
-
     tl.from('.gallery-column', { y: '50%', opacity: 0, ease: 'expo.out', stagger: 0.1, duration: 2 });
-
     tl.from(
       split.words,
       {
@@ -25,8 +23,8 @@ function createRevealAnimation() {
         skewX: '-20deg',
         opacity: 0,
         ease: 'expo.out',
-        stagger: 0.5,
-        duration: 1.5,
+        stagger: 0.08,
+        duration: 1,
       },
       '>-1'
     );
@@ -37,23 +35,15 @@ function createRevealAnimation() {
 
 onMounted(async () => {
   if (!process.client) return;
-  await nextTick();
+  await nextTick(); // Wait for parent to get mounted
   const tl = createRevealAnimation();
-
-  // Try to coordinate the reveal with the other animations
-  if (getTransition) {
-    const transition = getTransition();
-
-    if (transition.timeline) {
-      transition.timeline.add(tl, '-=1');
-    }
-  }
+  if (!!transition.timeline) transition.timeline.add(tl, '-=1');
 });
 </script>
 
 <template>
   <section id="home-hero" class="relative z-0 overflow-hidden">
-    <BaseContainer no-y-padding class="flex h-screen items-end justify-center">
+    <BaseContainer no-y-padding class="flex h-screen items-center justify-center md:items-end">
       <h1 class="mb-10 text-center text-[clamp(2rem,10vw,8.75rem)] uppercase leading-none text-white">
         Diseño web personalizado
       </h1>

@@ -1,7 +1,14 @@
 export default defineNuxtConfig({
   srcDir: 'src',
 
-  modules: ['@cgv.web/nuxt-ui', '@nuxtjs/tailwindcss', '@vueuse/nuxt', 'nuxt-icon', '@nuxtjs/i18n'],
+  modules: [
+    '@cgv.web/nuxt-ui',
+    '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
+    'nuxt-icon',
+    '@nuxtjs/i18n',
+    '@pinia/nuxt',
+  ],
 
   app: {
     head: {
@@ -41,6 +48,8 @@ export default defineNuxtConfig({
 
   build: { transpile: ['gsap'] },
   tailwindcss: { viewer: false },
+
+  imports: { dirs: ['stores'] },
   components: [{ path: '~/components', pathPrefix: false }],
 
   typescript: {
