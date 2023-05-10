@@ -4,7 +4,7 @@ const { t } = useI18n();
 
 <template>
   <section>
-    <BaseContainer class="grid gap-16 md:grid-cols-3 md:gap-5">
+    <BaseContainer class="grid gap-16 md:grid-cols-3 md:gap-8">
       <div class="md:col-span-2">
         <h2 class="text-3xl leading-snug text-white lg:text-4xl">{{ t('homePage.about.title') }}</h2>
       </div>
