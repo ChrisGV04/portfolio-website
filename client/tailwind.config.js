@@ -15,6 +15,7 @@ module.exports = {
       },
       colors: {
         gray: colors.neutral,
+        accent: colors.blue,
       },
     },
   },

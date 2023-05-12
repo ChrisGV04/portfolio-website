@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { NuxtLink } from '#components';
+
 const { t } = useI18n();
 const localeRoute = useLocaleRoute();
 
@@ -30,11 +32,9 @@ useCursorFollower(wrapperEl, visitEl);
       </ul>
 
       <div class="mt-10 flex justify-center">
-        <NuxtLink
-          :to="localeRoute('/projects')"
-          class="block rounded-xl border border-white/10 px-8 py-4 text-xl text-white text-opacity-60"
-          >{{ t('general.viewAll') }}</NuxtLink
-        >
+        <BaseButton :as="NuxtLink" :to="localeRoute('/projects')">
+          {{ t('general.viewAll') }}
+        </BaseButton>
       </div>
     </BaseContainer>
   </section>
