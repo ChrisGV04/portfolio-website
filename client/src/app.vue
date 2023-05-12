@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 
-if (process.client) gsap.registerPlugin(SplitText);
+if (process.client) gsap.registerPlugin(SplitText, ScrollSmoother, ScrollTrigger);
 
 const { locale } = useI18n();
 
@@ -28,6 +30,7 @@ function endTransition(_: unknown, done: Function) {
 onMounted(() => {
   if (!process.client) return;
   createLandingReveal();
+  ScrollSmoother.create({ wrapper: '#__nuxt', content: '#smooth-content' });
 });
 
 app.hook('page:finish', () => {
@@ -36,7 +39,7 @@ app.hook('page:finish', () => {
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col">
+  <div id="smooth-content" class="flex min-h-screen flex-col">
     <Html :lang="locale" />
     <Body :class="[lockScroll && 'h-screen w-screen overflow-hidden', 'bg-gray-900 antialiased']" />
 

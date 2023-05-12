@@ -51,19 +51,21 @@ onMounted(async () => {
       </h1>
     </BaseContainer>
 
-    <div class="absolute inset-0 -z-10 h-full w-full bg-gradient-to-t from-gray-900 to-transparent"></div>
+    <div
+      class="absolute inset-x-0 bottom-0 -z-10 h-20 w-full bg-gradient-to-t from-gray-900 to-transparent"
+    ></div>
 
     <div class="absolute inset-0 -z-20 h-full w-full">
       <BaseContainer class="grid grid-cols-2 gap-5 sm:grid-cols-3">
-        <div class="gallery-column mt-32 flex flex-col space-y-5">
+        <div style="opacity: 0.4" class="gallery-column mt-32 flex flex-col space-y-5">
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
         </div>
-        <div class="gallery-column flex flex-col space-y-5">
+        <div style="opacity: 0.4" class="gallery-column flex flex-col space-y-5">
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
         </div>
-        <div class="gallery-column hidden sm:mt-32 sm:flex sm:flex-col sm:space-y-5">
+        <div style="opacity: 0.4" class="gallery-column hidden sm:mt-32 sm:flex sm:flex-col sm:space-y-5">
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
         </div>
