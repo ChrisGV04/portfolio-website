@@ -17,7 +17,6 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.png' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'stylesheet', href: 'https://api.fontshare.com/v2/css?f[]=switzer@1&display=swap' },
       ],
     },
   },
