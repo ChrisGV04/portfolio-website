@@ -25,7 +25,7 @@ useCursorFollower(wrapperEl, visitEl);
           aria-hidden="true"
           role="presentation"
           style="transform: scale(0)"
-          class="pointer-events-none absolute -top-5 left-0 z-10 flex h-20 w-20 items-center justify-center rounded-full bg-blue-600 text-center font-medium text-white"
+          class="pointer-events-none absolute -top-5 left-0 z-10 flex h-20 w-20 items-center justify-center rounded-full bg-accent-600 text-center font-medium text-white"
         >
           {{ t('general.visit') }}
         </div>

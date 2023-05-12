@@ -32,7 +32,7 @@ const localeRoute = useLocaleRoute();
 
           <NuxtLink
             :to="localeRoute('/')"
-            class="grid h-40 w-40 place-items-center rounded-full bg-blue-600 text-lg font-medium text-white lg:h-52 lg:w-52"
+            class="grid h-40 w-40 place-items-center rounded-full bg-accent-600 text-lg font-medium text-white lg:h-52 lg:w-52"
             >{{ t('general.getInTouch') }}</NuxtLink
           >
         </div>
