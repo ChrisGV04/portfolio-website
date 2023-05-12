@@ -43,11 +43,11 @@ onMounted(async () => {
 
 <template>
   <section>
-    <BaseContainer class="grid gap-16 md:grid-cols-3 md:gap-8">
+    <BaseContainer class="grid gap-12 md:grid-cols-3 md:gap-8">
       <div class="md:col-span-2">
         <h2
           ref="titleEl"
-          class="fix-kerning whitespace-pre-line text-3xl leading-relaxed text-white lg:text-4xl lg:leading-tight"
+          class="fix-kerning whitespace-pre-line text-3xl leading-tight text-white lg:text-4xl lg:leading-tight"
         >
           {{ t('homePage.about.title') }}
         </h2>
