@@ -25,6 +25,7 @@
     "pinia": "2.0.36",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.2.8",
-    "qs": "6.11.1"
+    "qs": "6.11.1",
+    "split-type": "^0.3.3"
   }
 }

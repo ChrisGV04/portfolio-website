@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Switzer', 'system-ui', 'sans-serif'],
+        sans: 'Switzer, system-ui, sans-serif',
       },
       colors: {
         gray: colors.neutral,

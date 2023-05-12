@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { gsap, SplitText } from 'gsap/all';
+import { gsap } from 'gsap';
+import SplitType from 'split-type';
 
 const { t } = useI18n();
 
@@ -13,9 +14,9 @@ function createRevealAnimation() {
   });
 
   gsap.context(() => {
-    const split = new SplitText('h1', {
-      type: 'words,lines',
-      linesClass: 'overflow-hidden',
+    const split = new SplitType('h1', {
+      types: ['words', 'lines'],
+      lineClass: 'overflow-hidden',
     });
     tl.from('.gallery-column', { y: '50%', opacity: 0, ease: 'expo.out', stagger: 0.1, duration: 2 });
     tl.from(

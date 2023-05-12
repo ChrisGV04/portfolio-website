@@ -6,4 +6,10 @@
 }
 
 @layer utilities {
+  .fix-kerning {
+    font-kerning: none;
+    -webkit-font-kerning: none;
+    font-feature-settings: 'kern' off;
+    -webkit-font-feature-settings: 'kern' off;
+  }
 }
