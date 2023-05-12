@@ -4,8 +4,8 @@ const { elementX, elementY } = useMouseInElement(wrapperEl, { touch: false, hand
 </script>
 
 <template>
-  <li ref="wrapperEl">
-    <a href="#" target="_blank" class="feat-project relative flex items-center justify-between gap-5 p-10">
+  <li ref="wrapperEl" class="feat-project relative">
+    <a href="#" target="_blank" class="flex items-center justify-between gap-5 p-10">
       <h3 class="text-7xl text-white">Ecos media</h3>
       <span class="text-lg text-white">Type</span>
     </a>
