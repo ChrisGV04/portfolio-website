@@ -30,7 +30,7 @@ const { elementX, elementY } = useMouseInElement(wrapperEl, { touch: false, hand
 
   background: radial-gradient(
     800px circle at v-bind(`${elementX}px`) v-bind(`${elementY-20}px`),
-    rgba(255, 255, 255, 0.06),
+    rgba(37, 99, 235, 0.1),
     transparent 40%
   );
 }
