@@ -13,7 +13,7 @@ useCursorFollower(wrapperEl, visitEl);
 <template>
   <section>
     <BaseContainer no-y-padding class="pb-24 lg:pb-32">
-      <div class="px-10 py-5">
+      <div class="px-4 py-5 md:px-10">
         <h2 class="uppercase text-white opacity-60">{{ t('general.featuredProjects') }}</h2>
       </div>
 
@@ -25,7 +25,7 @@ useCursorFollower(wrapperEl, visitEl);
           aria-hidden="true"
           role="presentation"
           style="transform: scale(0)"
-          class="pointer-events-none absolute -top-5 left-0 z-10 flex h-20 w-20 items-center justify-center rounded-full bg-accent-600 text-center font-medium text-white"
+          class="pointer-events-none absolute -top-5 left-0 z-10 hidden rounded-full bg-accent-600 text-center font-medium text-white lg:flex lg:h-20 lg:w-20 lg:items-center lg:justify-center"
         >
           {{ t('general.visit') }}
         </div>
