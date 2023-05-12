@@ -50,7 +50,7 @@ defineProps({
 
 <style>
 .btn {
-  @apply relative inline-flex items-center border transition-colors duration-100 hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:select-none;
+  @apply relative inline-flex items-center border transition-colors duration-200 hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:select-none;
 }
 
 .btn__variant-default {
@@ -62,6 +62,6 @@ defineProps({
 }
 
 .btn__size-default {
-  @apply px-8 py-4 text-xl;
+  @apply px-6 py-3 text-lg md:px-8 md:py-4 md:text-xl;
 }
 </style>
