@@ -18,14 +18,14 @@ const format = (val: string): string => {
 };
 
 const formatSlug =
-  (fallback: string): FieldHook =>
+  (fieldToUse: string): FieldHook =>
   ({ operation, value, originalDoc, data }) => {
     if (typeof value === 'string') {
       return format(value);
     }
 
     if (operation === 'create') {
-      const fallbackData = (data && data[fallback]) || (originalDoc && originalDoc[fallback]);
+      const fallbackData = (data && data[fieldToUse]) || (originalDoc && originalDoc[fieldToUse]);
 
       if (fallbackData && typeof fallbackData === 'string') {
         return format(fallbackData);

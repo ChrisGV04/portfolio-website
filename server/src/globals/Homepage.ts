@@ -1,82 +1,91 @@
 import { GlobalConfig } from 'payload/types';
 import { Projects } from '../collections/Projects';
 import { Uploads } from '../collections/Uploads';
+import { titleField } from '../fields/TitleField';
+import { subtextField } from '../fields/SubtextField';
 
 export const HomePage: GlobalConfig = {
   slug: 'homepage',
-  label: 'Home',
-  access: {
-    read: () => true,
-  },
-  admin: { group: 'Pages' },
+  access: { read: () => true },
+  label: { en: 'Home Page', es: 'Inicio' },
+  admin: { group: { en: 'Pages', es: 'Páginas' } },
 
   fields: [
     {
       type: 'tabs',
       tabs: [
         {
-          label: 'Hero',
+          name: 'hero',
+          label: { en: 'Cover', es: 'Portada' },
           fields: [
             {
+              name: 'gallery',
               type: 'array',
-              name: 'heroGallery',
-              label: 'Hero Gallery',
-              maxRows: 12,
-              minRows: 12,
+              maxRows: 6,
+              minRows: 6,
               required: true,
-              labels: { singular: 'Image', plural: 'Images' },
+              label: { en: 'Background gallery', es: 'Galería de fondo' },
+              labels: { singular: { en: 'Image', es: 'Imagen' }, plural: { en: 'Images', es: 'Imágenes' } },
               fields: [
                 {
                   name: 'img',
                   type: 'upload',
-                  label: 'Image',
                   required: true,
                   relationTo: Uploads.slug,
+                  label: { en: 'Image', es: 'Imagen' },
                 },
               ],
             },
           ],
-        }, // End hero tab
+        }, // End Hero
 
         {
-          label: 'Services',
-          name: 'services',
-          fields: [
-            {
-              type: 'upload',
-              required: true,
-              label: 'Coding Image',
-              name: 'codingImage',
-              relationTo: Uploads.slug,
-            },
-            {
-              type: 'upload',
-              required: true,
-              name: 'webImage',
-              label: 'Web Image',
-              relationTo: Uploads.slug,
-            },
-            {
-              type: 'upload',
-              required: true,
-              relationTo: Uploads.slug,
-              name: 'ecommerceImage',
-              label: 'Ecommerce Image',
-            },
-          ],
-        }, // End services tab
+          name: 'about',
+          label: { en: 'About', es: 'Acerca' },
+          fields: [titleField(), subtextField()],
+        }, // End About
 
         {
-          label: 'Projects',
+          name: 'featProjects',
+          label: { en: 'Projects', es: 'Proyectos' },
           fields: [
             {
+              name: 'projects',
+              required: true,
               type: 'relationship',
               relationTo: Projects.slug,
-              name: 'featProjects',
               hasMany: true,
+              min: 3,
+              max: 9,
+              label: { en: 'Projects', es: 'Proyectos' },
             },
           ],
-        }, // End projects tab
+        }, // End Featured Projects
+
+        {
+          name: 'bottomMarquee',
+          label: { en: 'Gallery', es: 'Galería' },
+          fields: [
+            {
+              name: 'gallery',
+              type: 'array',
+              maxRows: 6,
+              minRows: 4,
+              required: true,
+              label: { en: 'Marquee gallery', es: 'Galería carrusel' },
+              labels: { singular: { en: 'Image', es: 'Imagen' }, plural: { en: 'Images', es: 'Imágenes' } },
+              fields: [
+                {
+                  name: 'img',
+                  type: 'upload',
+                  required: true,
+                  relationTo: Uploads.slug,
+                  label: { en: 'Image', es: 'Imagen' },
+                },
+              ],
+            },
+          ],
+        }, // End Bottom Marquee
       ],
     },
   ],

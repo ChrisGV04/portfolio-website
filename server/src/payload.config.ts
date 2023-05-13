@@ -3,15 +3,12 @@ import path from 'path';
 import { buildConfig } from 'payload/config';
 import { Icon } from './admin/Icon';
 import { Logo } from './admin/Logo';
-import { ProjectCategories } from './collections/ProjectCategories';
 import { Projects } from './collections/Projects';
 import { Uploads } from './collections/Uploads';
 import { Users } from './collections/Users';
 import { HomePage } from './globals/Homepage';
 
-dotenv.config({
-  path: path.resolve(__dirname, '../.env'),
-});
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 export default buildConfig({
   maxDepth: 5,
@@ -39,12 +36,10 @@ export default buildConfig({
   },
 
   globals: [HomePage],
-  collections: [Projects, ProjectCategories, Users, Uploads],
+  collections: [Users, Uploads, Projects],
 
+  graphQL: { disable: true },
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
-  },
-  graphQL: {
-    schemaOutputFile: path.resolve(__dirname, 'schema.graphql'),
   },
 });
