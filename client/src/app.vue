@@ -72,7 +72,7 @@ app.hook('page:finish', () => {
 </script>
 
 <template>
-  <div id="smooth-content" class="flex min-h-screen flex-col">
+  <div class="flex min-h-screen flex-col">
     <Html :lang="locale" />
     <Body class="bg-gray-900 antialiased" />
 

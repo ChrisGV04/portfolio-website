@@ -6,6 +6,9 @@ const { t } = useI18n();
 
 const transition = useTransitionStore();
 
+const titleEl = ref<HTMLElement | null>(null);
+const galleryColumns = ref<Element[]>([]);
+
 function createRevealAnimation() {
   const tl = gsap.timeline({
     onComplete() {
@@ -13,25 +16,23 @@ function createRevealAnimation() {
     },
   });
 
-  gsap.context(() => {
-    const split = new SplitType('h1', {
-      types: ['words', 'lines'],
-      lineClass: 'overflow-hidden',
-    });
-    tl.from('.gallery-column', { y: '50%', opacity: 0, ease: 'expo.out', stagger: 0.1, duration: 2 });
-    tl.from(
-      split.words,
-      {
-        y: '50%',
-        opacity: 0,
-        skewX: '-10deg',
-        ease: 'expo.out',
-        stagger: 0.08,
-        duration: 1,
-      },
-      '>-1'
-    );
-  }, '#home-hero');
+  const split = new SplitType(titleEl.value!, {
+    types: ['words', 'lines'],
+    lineClass: 'overflow-hidden',
+  });
+  tl.from(galleryColumns.value, { y: '50%', opacity: 0, ease: 'expo.out', stagger: 0.1, duration: 2 });
+  tl.from(
+    split.words,
+    {
+      y: '50%',
+      opacity: 0,
+      skewX: '-10deg',
+      ease: 'expo.out',
+      stagger: 0.08,
+      duration: 1,
+    },
+    '>-1'
+  );
 
   return tl;
 }
@@ -45,9 +46,12 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section id="home-hero" class="relative z-0 overflow-hidden">
+  <section ref="container" id="home-hero" class="relative z-0 overflow-hidden">
     <BaseContainer no-y-padding class="flex h-screen items-center justify-center md:items-end">
-      <h1 class="mb-10 text-center text-[clamp(2rem,10vw,8.75rem)] uppercase leading-none text-white">
+      <h1
+        ref="titleEl"
+        class="mb-10 text-center text-[clamp(2rem,10vw,8.75rem)] uppercase leading-none text-white"
+      >
         {{ t('homePage.heroTitle') }}
       </h1>
     </BaseContainer>
@@ -58,17 +62,29 @@ onMounted(async () => {
 
     <div class="absolute inset-0 -z-20 h-full w-full">
       <BaseContainer class="grid grid-cols-2 gap-5 sm:grid-cols-3">
-        <div style="opacity: 0.4" class="gallery-column -mt-32 flex flex-col space-y-5 sm:mt-32">
+        <div
+          :ref="(el) => galleryColumns.push(el as Element)"
+          style="opacity: 0.4"
+          class="gallery-column -mt-32 flex flex-col space-y-5 sm:mt-32"
+        >
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600 sm:hidden"></div>
         </div>
-        <div style="opacity: 0.4" class="gallery-column flex flex-col space-y-5">
+        <div
+          :ref="(el) => galleryColumns.push(el as Element)"
+          style="opacity: 0.4"
+          class="gallery-column flex flex-col space-y-5"
+        >
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600 sm:hidden"></div>
         </div>
-        <div style="opacity: 0.4" class="gallery-column hidden sm:mt-32 sm:flex sm:flex-col sm:space-y-5">
+        <div
+          :ref="(el) => galleryColumns.push(el as Element)"
+          style="opacity: 0.4"
+          class="gallery-column hidden sm:mt-32 sm:flex sm:flex-col sm:space-y-5"
+        >
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
           <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
         </div>
