@@ -10,7 +10,7 @@ const styles = computed(() => {
 
   if (props.size === 'default') {
     sizingClasses = 'max-w-6xl';
-    if (!props.noXPadding) sizingClasses += ' sm:px-6 lg:px-8 2xl:px-0';
+    if (!props.noXPadding) sizingClasses += ' sm:px-6 xl:px-0';
   } else if (props.size === 'full') {
     if (!props.noXPadding) sizingClasses += ' sm:px-6 lg:px-8';
   } else if (props.size === 'sm') {
