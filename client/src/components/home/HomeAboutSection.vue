@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { gsap } from 'gsap/all';
 import SplitType from 'split-type';
+import type { HomepageInfo } from '~/types/cms';
 
-const { t } = useI18n();
 const app = useNuxtApp();
+
+defineProps({ info: { type: Object as PropType<HomepageInfo['about']>, required: true } });
 
 const titleEl = ref<HTMLElement | null>(null);
 
@@ -47,12 +49,12 @@ app.hooks.hookOnce('page:reveal', () => {
           ref="titleEl"
           class="fix-kerning whitespace-pre-line text-3xl leading-tight text-white lg:text-4xl lg:leading-tight"
         >
-          {{ t('homePage.about.title') }}
+          {{ info.title }}
         </h2>
       </div>
 
       <div class="max-w-xs md:max-w-full">
-        <p class="whitespace-pre-line text-white lg:text-lg">{{ t('homePage.about.body') }}</p>
+        <p class="whitespace-pre-line text-white lg:text-lg">{{ info.subtext }}</p>
       </div>
     </BaseContainer>
   </section>

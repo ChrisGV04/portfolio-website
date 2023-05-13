@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import type { ProjectInfo } from '~/types/cms';
+
 const { t } = useI18n();
+
+defineProps({ info: { type: Object as PropType<ProjectInfo>, required: true } });
 
 const wrapperEl = ref<HTMLElement | null>(null);
 const { elementX, elementY } = useMouseInElement(wrapperEl, { touch: false, handleOutside: false });
@@ -7,13 +11,15 @@ const { elementX, elementY } = useMouseInElement(wrapperEl, { touch: false, hand
 
 <template>
   <li ref="wrapperEl" class="feat-project relative">
-    <a href="#" target="_blank" class="flex flex-col px-4 py-5 md:px-10 lg:p-10">
+    <a :href="info.liveUrl" target="_blank" class="flex flex-col px-4 py-5 md:px-10 lg:p-10">
       <div class="flex items-center justify-between gap-8">
-        <h3 class="flex-1 text-2xl text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Ecos media</h3>
+        <h3 class="flex-1 text-2xl text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+          {{ info.name }}
+        </h3>
 
         <div class="hidden gap-5 md:flex">
-          <span class="text-base text-white text-opacity-70 lg:w-60 lg:text-lg">Design & development</span>
-          <span class="text-base text-white text-opacity-70 lg:w-14 lg:text-lg">2023</span>
+          <span class="text-base text-white text-opacity-70 lg:w-60 lg:text-lg">{{ info.services }}</span>
+          <span class="text-base text-white text-opacity-70 lg:w-14 lg:text-lg">{{ info.year }}</span>
         </div>
 
         <div class="lg:hidden">
@@ -25,9 +31,9 @@ const { elementX, elementY } = useMouseInElement(wrapperEl, { touch: false, hand
       </div>
 
       <div class="mt-2 flex justify-between gap-5 text-white text-opacity-70 md:hidden">
-        <span class="text-sm sm:text-base">Design & development</span>
+        <span class="text-sm sm:text-base">{{ info.services }}</span>
 
-        <span class="text-sm sm:text-base">2023</span>
+        <span class="text-sm sm:text-base">{{ info.year }}</span>
       </div>
     </a>
   </li>

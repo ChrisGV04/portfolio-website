@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
 import SplitType from 'split-type';
+import type { HomepageInfo } from '~/types/cms';
 
 const { t } = useI18n();
+
+defineProps({ gallery: { type: Array as PropType<HomepageInfo['hero']['gallery']>, required: true } });
 
 const app = useNuxtApp();
 const transition = useTransitionStore();
@@ -63,30 +66,44 @@ app.hooks.hookOnce('page:reveal', () => {
     <div class="absolute inset-0 -z-20 h-full w-full">
       <BaseContainer class="grid grid-cols-2 gap-5 sm:grid-cols-3">
         <div
+          style="opacity: 0.2"
           :ref="(el) => galleryColumns.push(el as Element)"
-          style="opacity: 0.4"
           class="gallery-column -mt-32 flex flex-col space-y-5 sm:mt-32"
         >
-          <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
-          <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
-          <div class="aspect-[3/4] w-full rounded-lg bg-gray-600 sm:hidden"></div>
+          <img
+            :src="item.img.url"
+            :alt="item.img.alt"
+            v-for="(item, itemIdx) in gallery.slice(0, 3)"
+            :class="[`aspect-[3/4] w-full rounded-lg`, itemIdx === 2 && 'sm:hidden']"
+          />
         </div>
         <div
+          style="opacity: 0.2"
           :ref="(el) => galleryColumns.push(el as Element)"
-          style="opacity: 0.4"
           class="gallery-column flex flex-col space-y-5"
         >
-          <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
-          <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
-          <div class="aspect-[3/4] w-full rounded-lg bg-gray-600 sm:hidden"></div>
+          <img
+            :src="item.img.url"
+            :alt="item.img.alt"
+            v-for="(item, itemIdx) in gallery.slice(2, 6)"
+            :class="[
+              `aspect-[3/4] w-full rounded-lg`,
+              itemIdx === 0 && 'hidden sm:block',
+              itemIdx >= 2 && 'sm:hidden',
+            ]"
+          />
         </div>
         <div
+          style="opacity: 0.2"
           :ref="(el) => galleryColumns.push(el as Element)"
-          style="opacity: 0.4"
           class="gallery-column hidden sm:mt-32 sm:flex sm:flex-col sm:space-y-5"
         >
-          <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
-          <div class="aspect-[3/4] w-full rounded-lg bg-gray-600"></div>
+          <img
+            :src="item.img.url"
+            :alt="item.img.alt"
+            v-for="item in gallery.slice(4, 6)"
+            class="aspect-[3/4] w-full rounded-lg"
+          />
         </div>
       </BaseContainer>
     </div>

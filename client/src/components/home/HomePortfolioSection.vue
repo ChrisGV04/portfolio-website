@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { NuxtLink } from '#components';
+import type { ProjectInfo } from '~/types/cms';
 
 const { t } = useI18n();
 const localeRoute = useLocaleRoute();
+
+defineProps({ projects: { type: Array<ProjectInfo>, required: true } });
 
 const wrapperEl = ref<HTMLElement | null>(null);
 const visitEl = ref<HTMLElement | null>(null);
@@ -18,7 +21,7 @@ useCursorFollower(wrapperEl, visitEl);
       </div>
 
       <ul ref="wrapperEl" class="relative divide-y divide-white/10 border-y border-white/10">
-        <FeaturedProjectListing v-for="i in 4" />
+        <FeaturedProjectListing v-for="project in projects" :info="project" />
 
         <div
           ref="visitEl"
