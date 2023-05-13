@@ -4,6 +4,7 @@ import SplitType from 'split-type';
 
 const { t } = useI18n();
 
+const app = useNuxtApp();
 const transition = useTransitionStore();
 
 const titleEl = ref<HTMLElement | null>(null);
@@ -37,11 +38,10 @@ function createRevealAnimation() {
   return tl;
 }
 
-onMounted(async () => {
+app.hooks.hookOnce('page:reveal', () => {
   if (!process.client) return;
-  await nextTick(); // Wait for parent to get mounted
   const tl = createRevealAnimation();
-  if (!!transition.timeline) transition.timeline.add(tl, '-=0.8');
+  if (!!transition.timeline) transition.timeline.add(tl, '-=0.6');
 });
 </script>
 

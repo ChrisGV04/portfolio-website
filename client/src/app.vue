@@ -7,6 +7,13 @@ const { locale } = useI18n();
 
 /* ANIMATION */
 const app = useNuxtApp();
+
+/**
+ * Custom hook to let the pages know when they can
+ * play their reveal animations
+ */
+app.hooks.addHooks('page:reveal');
+
 const transition = useTransitionStore();
 
 const courtainEl = ref<HTMLElement | null>(null);
@@ -14,7 +21,7 @@ const courtainLogoEl = ref<HTMLElement | null>(null);
 
 function createLandingReveal() {
   transition.mode = 'landing';
-  transition.createTimeline();
+  transition.createTimeline(false);
 
   transition.timeline!.fromTo(
     courtainLogoEl.value,
@@ -30,44 +37,56 @@ function createLandingReveal() {
   });
 }
 
-function startTransition(_: unknown, done: Function) {
-  transition.mode = 'transition';
-  transition.createTimeline(false);
+async function onLeave(_: unknown, done: Function) {
+  /**
+   * We consider onLeave as completed ONLY once the "page:finish" hook
+   * is called and the transition courtain was placed
+   */
+  await Promise.all([
+    new Promise((resolve) => app.hooks.hookOnce('page:finish', () => resolve(true))),
+    new Promise((resolve) => {
+      transition.mode = 'transition';
+      transition.createTimeline(false);
 
-  transition.timeline!.fromTo(
-    courtainEl.value,
-    { y: 0, opacity: 0 },
-    {
-      opacity: 1,
-      duration: 0.5,
-      ease: 'expo.out',
-      onComplete() {
-        transition.timeline?.pause();
-        done();
-      },
-    }
-  );
-  transition.timeline!.to(courtainEl.value, {
-    delay: 0.2,
-    keyframes: [
-      { opacity: 0, duration: 1, ease: 'expo.out' },
-      { y: '-100%', duration: 0 },
-    ],
-  });
+      transition.timeline!.fromTo(
+        courtainEl.value,
+        { y: 0, opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.5,
+          ease: 'expo.out',
+          onComplete() {
+            transition.timeline?.pause();
+            resolve(true);
+          },
+        }
+      );
+      transition.timeline!.to(courtainEl.value, {
+        delay: 0.2,
+        keyframes: [
+          { opacity: 0, duration: 1, ease: 'expo.out' },
+          { y: '-100%', duration: 0 },
+        ],
+      });
+    }),
+  ]);
+
+  done();
 }
 
-function endTransition(_: unknown, done: Function) {
+function onEnter(_: unknown, done: Function) {
+  app.callHook('page:reveal');
   transition.timeline?.play();
   done();
 }
 
-onMounted(() => {
+/**
+ * Play a website reveal animation
+ */
+app.hooks.hookOnce('page:finish', () => {
   if (!process.client) return;
   createLandingReveal();
-});
-
-app.hook('page:finish', () => {
-  if (process.client) transition.timeline?.play();
+  app.callHook('page:reveal');
 });
 </script>
 
@@ -98,15 +117,7 @@ app.hook('page:finish', () => {
 
     <GlobalHeader />
 
-    <NuxtPage
-      class="flex-1"
-      :transition="{
-        css: false,
-        mode: 'out-in',
-        onLeave: startTransition,
-        onEnter: endTransition,
-      }"
-    />
+    <NuxtPage class="flex-1" :transition="{ css: false, mode: 'out-in', onEnter, onLeave }" />
 
     <GlobalFooter />
   </div>

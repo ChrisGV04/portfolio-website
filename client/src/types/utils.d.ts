@@ -1,3 +1,5 @@
+import { RuntimeNuxtHooks } from '#app';
+
 export interface PaginationOpts {
   page: number;
   limit: number;
@@ -11,4 +13,10 @@ export interface PaginationOpts {
 
 export interface Paginated<T = any> extends PaginationOpts {
   docs: T[];
+}
+
+declare module '#app' {
+  export interface RuntimeNuxtHooks {
+    'page:reveal': () => void;
+  }
 }
