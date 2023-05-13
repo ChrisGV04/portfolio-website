@@ -28,13 +28,18 @@ function createLandingReveal() {
     { opacity: 0, y: 5 },
     { y: 0, opacity: 1, ease: 'expo.out', delay: 0.8 }
   );
-  transition.timeline!.to(courtainEl.value, {
-    keyframes: [
-      { opacity: 0, duration: 1, ease: 'expo.out' },
-      { y: '-100%', duration: 0 },
-    ],
-    delay: 0.5,
-  });
+  transition.timeline!.to(courtainLogoEl.value, { scale: 0, duration: 0.5, ease: 'power4.in', delay: 0.5 });
+  transition.timeline!.to(
+    courtainEl.value,
+    {
+      keyframes: [
+        { opacity: 0, duration: 1, ease: 'expo.out' },
+        { y: '-100%', duration: 0 },
+      ],
+    },
+    '>-0.1'
+  );
+  transition.timeline!.set(courtainLogoEl.value, { scale: 1, duration: 0 });
 }
 
 async function onLeave(_: unknown, done: Function) {
@@ -104,7 +109,7 @@ app.hooks.hookOnce('page:finish', () => {
     <div
       ref="courtainEl"
       aria-hidden="true"
-      class="fixed z-[999] flex h-screen w-screen flex-col items-center justify-center bg-gray-950"
+      class="fixed z-[999] flex h-screen w-screen flex-col items-center justify-center overflow-hidden bg-gray-950"
     >
       <img
         class="w-24"
