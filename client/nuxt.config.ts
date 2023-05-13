@@ -19,6 +19,8 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
       ],
     },
+
+    pageTransition: { css: false },
   },
 
   runtimeConfig: {
