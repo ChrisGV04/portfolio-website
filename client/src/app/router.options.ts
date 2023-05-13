@@ -15,13 +15,18 @@ export default <RouterConfig>{
     let position: ScrollPosition = savedPosition || undefined;
 
     // Scroll to top if route is changed by default
-    if (!position && from && to && to.meta.scrollToTop !== false && _isDifferentRoute(from, to))
+    if (!position && from && to && to.meta.scrollToTop !== false && _isDifferentRoute(from, to)) {
       position = { left: 0, top: 0 };
+    }
 
     // Hash routes on the same page, no page hook is fired so resolve here
     if (to.path === from.path) {
-      if (from.hash && !to.hash) return { left: 0, top: 0, behavior: 'smooth' };
-      if (to.hash) return { el: to.hash, top: _getHashElementScrollMarginTop(to.hash), behavior: 'smooth' };
+      if (from.hash && !to.hash) {
+        return { left: 0, top: 0, behavior: 'smooth' };
+      }
+      if (to.hash) {
+        return { el: to.hash, top: _getHashElementScrollMarginTop(to.hash), behavior: 'smooth' };
+      }
     }
 
     // Wait for `page:transition:finish` or `page:finish` depending on if transitions are enabled or not
@@ -32,7 +37,9 @@ export default <RouterConfig>{
     return new Promise((resolve) => {
       nuxtApp.hooks.hookOnce(hookToWait, async () => {
         await nextTick();
-        if (to.hash) position = { el: to.hash, top: _getHashElementScrollMarginTop(to.hash) };
+        if (to.hash) {
+          position = { el: to.hash, top: _getHashElementScrollMarginTop(to.hash) };
+        }
         resolve(position);
       });
     });
@@ -43,7 +50,7 @@ function _getHashElementScrollMarginTop(selector: string): number {
   try {
     const elem = document.querySelector(selector);
     if (elem) {
-      // Get element's scrollMarginTop or use default 80 pixels from the header
+      // Get element's scrollMarginTop or use default height of the header
       return parseFloat(getComputedStyle(elem).scrollMarginTop) || HEADER_HEIGHT;
     }
   } catch {}

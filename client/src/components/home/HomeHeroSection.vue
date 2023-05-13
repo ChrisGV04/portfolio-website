@@ -40,7 +40,7 @@ onMounted(async () => {
   if (!process.client) return;
   await nextTick(); // Wait for parent to get mounted
   const tl = createRevealAnimation();
-  if (!!transition.timeline) transition.timeline.add(tl, '-=1');
+  if (!!transition.timeline) transition.timeline.add(tl, '-=0.8');
 });
 </script>
 
