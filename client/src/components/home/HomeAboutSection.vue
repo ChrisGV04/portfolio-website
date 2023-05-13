@@ -3,6 +3,7 @@ import { gsap } from 'gsap/all';
 import SplitType from 'split-type';
 
 const { t } = useI18n();
+const app = useNuxtApp();
 
 const titleEl = ref<HTMLElement | null>(null);
 
@@ -35,7 +36,7 @@ function createReveal() {
   });
 }
 
-onMounted(async () => {
+app.hooks.hookOnce('page:reveal', () => {
   if (!process.client) return;
   createReveal();
 });
