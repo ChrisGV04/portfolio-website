@@ -36,5 +36,7 @@ useCursorFollower(wrapperEl, visitEl);
         </ul>
       </BaseContainer>
     </section>
+
+    <GlobalCta />
   </main>
 </template>

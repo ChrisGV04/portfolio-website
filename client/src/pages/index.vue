@@ -19,5 +19,7 @@ useHead({ title: t('homePage.heroTitle') });
         </div>
       </UiMarquee>
     </section>
+
+    <GlobalCta />
   </main>
 </template>
