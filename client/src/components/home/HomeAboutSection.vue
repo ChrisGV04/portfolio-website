@@ -16,7 +16,7 @@ function createReveal() {
   });
 
   const tl = gsap.timeline({
-    scrollTrigger: { trigger: titleEl.value, start: 'top 80%', markers: true },
+    scrollTrigger: { trigger: titleEl.value, start: 'top 80%' },
     onComplete() {
       tl.revert();
     },
