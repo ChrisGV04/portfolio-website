@@ -31,8 +31,12 @@ watch(isMobile, (mobile) => {
 
       <div>
         <nav class="hidden xl:flex xl:flex-col xl:items-end xl:space-y-3">
-          <NuxtLink class="navlink" :to="localeRoute('/projects')">{{ t('navigation.projects') }}</NuxtLink>
-          <NuxtLink class="navlink" :to="localeRoute('/contact')">{{ t('navigation.contact') }}</NuxtLink>
+          <NuxtLink class="navlink" active-class="underline" :to="localeRoute('/projects')">
+            {{ t('navigation.projects') }}
+          </NuxtLink>
+          <NuxtLink class="navlink" active-class="underline" :to="localeRoute('/contact')">
+            {{ t('navigation.contact') }}
+          </NuxtLink>
 
           <div class="flex space-x-5">
             <NuxtLink custom :to="switchLocale('en')" v-slot="{ isActive, href }">
@@ -80,6 +84,6 @@ watch(isMobile, (mobile) => {
 
 <style scoped>
 .navlink {
-  @apply text-right font-medium uppercase text-white hover:text-opacity-70;
+  @apply whitespace-pre-line text-right font-medium uppercase text-white hover:text-opacity-70;
 }
 </style>

@@ -76,10 +76,14 @@ watch(
 
       <nav class="flex flex-col space-y-4">
         <div class="overflow-hidden py-2">
-          <NuxtLink class="menu-link" :to="localeRoute('/projects')">{{ t('navigation.projects') }}</NuxtLink>
+          <NuxtLink class="menu-link" @click="$emit('close')" :to="localeRoute('/projects')">
+            {{ t('navigation.projects') }}
+          </NuxtLink>
         </div>
         <div class="overflow-hidden py-2">
-          <NuxtLink class="menu-link" :to="localeRoute('/contact')">{{ t('navigation.contact') }}</NuxtLink>
+          <NuxtLink class="menu-link" @click="$emit('close')" :to="localeRoute('/contact')">
+            {{ t('navigation.contact') }}
+          </NuxtLink>
         </div>
 
         <div class="flex space-x-5 overflow-hidden">
