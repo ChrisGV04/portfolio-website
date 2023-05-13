@@ -1,5 +1,3 @@
-import { RuntimeNuxtHooks } from '#app';
-
 export interface PaginationOpts {
   page: number;
   limit: number;
