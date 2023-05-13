@@ -19,9 +19,12 @@ const transition = useTransitionStore();
 const courtainEl = ref<HTMLElement | null>(null);
 const courtainLogoEl = ref<HTMLElement | null>(null);
 
-function createLandingReveal() {
+async function createLandingReveal() {
   transition.mode = 'landing';
   transition.createTimeline(false);
+
+  // Wait for the render to happen
+  if (!courtainEl.value || !courtainLogoEl.value) await nextTick();
 
   transition.timeline!.fromTo(
     courtainLogoEl.value,
@@ -88,9 +91,9 @@ function onEnter(_: unknown, done: Function) {
 /**
  * Play a website reveal animation
  */
-app.hooks.hookOnce('page:finish', () => {
+app.hooks.hookOnce('page:finish', async () => {
   if (!process.client) return;
-  createLandingReveal();
+  await createLandingReveal();
   app.callHook('page:reveal');
 });
 </script>
