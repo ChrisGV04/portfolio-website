@@ -6,13 +6,10 @@ export const Uploads: CollectionConfig = {
     read: (): boolean => true,
   },
   labels: {
-    plural: 'Uploads',
-    singular: 'Upload',
+    plural: { en: 'Uploads', es: 'Archivos' },
+    singular: { en: 'Upload', es: 'Archivo' },
   },
-  admin: {
-    group: 'Admin',
-    useAsTitle: 'alt',
-  },
+  admin: { group: 'Admin', useAsTitle: 'alt' },
   upload: {
     staticURL: '/uploads',
     staticDir: '../public/uploads',
@@ -24,7 +21,7 @@ export const Uploads: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
-      label: 'Alt text',
+      label: { en: 'Alternative text', es: 'Texto alternativo' },
     },
   ],
 };
