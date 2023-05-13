@@ -7,21 +7,18 @@ const app = useNuxtApp();
 
 const titleEl = ref<HTMLElement | null>(null);
 
-let tl: gsap.core.Timeline | null = null;
-
 function createReveal() {
-  if (!!tl || !titleEl.value) return;
+  if (!titleEl.value) return;
 
   const titleSplit = new SplitType(titleEl.value, {
     types: ['lines', 'words'],
     lineClass: 'overflow-hidden',
   });
 
-  tl = gsap.timeline({
-    scrollTrigger: { trigger: titleEl.value, start: 'top 80%' },
+  const tl = gsap.timeline({
+    scrollTrigger: { trigger: titleEl.value, start: 'top 80%', markers: true },
     onComplete() {
-      tl?.revert();
-      tl?.kill();
+      tl.revert();
     },
   });
 
