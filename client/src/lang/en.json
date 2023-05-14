@@ -57,5 +57,15 @@
 
   "contactPage": {
     "heroTitle": "Let's work together on your project"
+  },
+
+  "errorPage": {
+    "oops": "Oops!",
+    "title": "An error has ocurred",
+    "internalError": "Internal error. Please come back later",
+    "notFound": "Error 404. Resource was moved or doesn't exist",
+    "unknownError": "Unknown error. We're working on it! Please come back later",
+    "unknownErrorToHome": "Unknown error. Try going to the home page",
+    "goHome": "Go back home"
   }
 }

@@ -9,13 +9,14 @@ useHead({ title: t('general.getInTouch') });
 const { data, error } = await useFetch<ContactPageInfo>(
   `${env.public.apiUrl}/globals/contact-page?locale=${locale.value}`
 );
+if (error.value) throw createError({ ...error.value, fatal: true });
 </script>
 
 <template>
   <main class="flex">
     <BaseContainer
+      v-if="data"
       no-y-padding
-      v-if="data && !error"
       class="flex flex-col gap-8 py-24 sm:pt-32 md:flex-row md:items-center md:justify-between"
     >
       <div class="max-w-lg lg:max-w-3xl">

@@ -9,11 +9,12 @@ useHead({ title: t('homePage.heroTitle') });
 const { data, error } = await useFetch<HomepageInfo>(
   `${env.public.apiUrl}/globals/homepage?locale=${locale.value}`
 );
+if (error.value) throw createError({ ...error.value, fatal: true });
 </script>
 
 <template>
   <main>
-    <template v-if="data && !error">
+    <template v-if="data">
       <HomeHeroSection :gallery="data.hero.gallery" />
       <HomeAboutSection :info="data.about" />
       <HomePortfolioSection :projects="data.featProjects.projects" />

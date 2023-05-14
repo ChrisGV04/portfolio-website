@@ -10,6 +10,7 @@ const env = useRuntimeConfig();
 const { data, error } = await useFetch<GlobalInfo>(
   `${env.public.apiUrl}/globals/global-info?locale=${locale.value}`
 );
+if (error.value) throw createError({ ...error.value, fatal: true, cause: 'app' });
 
 /* ANIMATION */
 const app = useNuxtApp();
@@ -105,7 +106,7 @@ app.hooks.hookOnce('page:finish', async () => {
 </script>
 
 <template>
-  <div v-if="data && !error" class="flex min-h-screen flex-col">
+  <div class="flex min-h-screen flex-col">
     <Html :lang="locale" />
     <Body class="bg-gray-900 antialiased" />
 
@@ -133,6 +134,6 @@ app.hooks.hookOnce('page:finish', async () => {
 
     <NuxtPage class="flex-1" :transition="{ css: false, mode: 'out-in', onEnter, onLeave }" />
 
-    <GlobalFooter :contact-methods="data.footerContactMethods" />
+    <GlobalFooter v-if="data" :contact-methods="data.footerContactMethods" />
   </div>
 </template>

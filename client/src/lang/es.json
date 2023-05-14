@@ -57,5 +57,15 @@
 
   "contactPage": {
     "heroTitle": "Trabajemos juntos en tu proyecto"
+  },
+
+  "errorPage": {
+    "oops": "Oops!",
+    "title": "Ha ocurrido un error",
+    "internalError": "Error interno. Por favor, vuelve más tarde",
+    "notFound": "Error 404. El recurso no existe o ha sido movido",
+    "unknownError": "Error desconocido. Estamos trabajando corregirlo! Por favor, vuelve más tarde",
+    "unknownErrorToHome": "Error desconocido. Intenta ir a la página principal",
+    "goHome": "Ir a página principal"
   }
 }
