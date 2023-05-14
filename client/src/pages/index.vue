@@ -23,6 +23,7 @@ if (error.value) throw createError({ ...error.value, fatal: true });
         <UiMarquee :speed="40">
           <div class="ml-4 flex flex-nowrap gap-4 md:ml-8 md:gap-8">
             <img
+              loading="lazy"
               :src="item.img.url"
               :alt="item.img.alt"
               v-for="item in data.bottomMarquee.gallery"
