@@ -6,6 +6,38 @@ const { t, locale } = useI18n();
 
 useHead({ title: t('homePage.heroTitle') });
 
+definePageMeta({
+  // Handle initial language redirect
+  middleware: (to, from) => {
+    if (to.fullPath !== '/' || to.fullPath !== from.fullPath) return;
+
+    const cookie = useCookie('i18n');
+    const switchLocale = useSwitchLocalePath();
+
+    // If user already got a redirection cookie, allow any language switch
+    if (cookie.value) {
+      if (cookie.value.startsWith('es') && to.fullPath.startsWith('/en'))
+        return navigateTo(switchLocale('es'));
+      if (cookie.value.startsWith('en') && !to.fullPath.startsWith('/en'))
+        return navigateTo(switchLocale('en'));
+
+      return;
+    }
+
+    // No cookie set. Figure out which language to use
+    if (process.client && 'language' in navigator) {
+      const language = navigator.language;
+      if (language.startsWith('en')) {
+        cookie.value = 'en';
+        return navigateTo(switchLocale('en'));
+      }
+
+      cookie.value = 'es';
+      return;
+    }
+  },
+});
+
 const { data, error } = await useFetch<HomepageInfo>(
   `${env.public.apiUrl}/globals/homepage?locale=${locale.value}`
 );
