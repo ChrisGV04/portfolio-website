@@ -1,6 +1,45 @@
 <script setup lang="ts">
+import { gsap } from 'gsap';
+import SplitType from 'split-type';
+
 const { t } = useI18n();
 const localeRoute = useLocaleRoute();
+
+/* ANIMATION */
+
+const app = useNuxtApp();
+const titleEl = ref<HTMLElement | null>(null);
+
+function createReveal() {
+  if (!titleEl.value) return;
+
+  const titleSplit = new SplitType(titleEl.value, {
+    types: ['lines', 'words'],
+    lineClass: 'overflow-hidden',
+  });
+
+  const tl = gsap.timeline({
+    scrollTrigger: { trigger: titleEl.value, start: 'top 80%' },
+    onComplete() {
+      tl.revert();
+    },
+  });
+
+  tl.from(titleSplit.words, {
+    y: '100%',
+    duration: 1.2,
+    stagger: 0.01,
+    ease: 'expo.out',
+    onComplete() {
+      titleSplit.revert();
+    },
+  });
+}
+
+app.hooks.hookOnce('page:reveal', () => {
+  if (!process.client) return;
+  createReveal();
+});
 </script>
 
 <template>
@@ -8,11 +47,10 @@ const localeRoute = useLocaleRoute();
     <BaseContainer no-y-padding>
       <div class="flex flex-col gap-8 py-12 lg:flex-row lg:justify-between lg:py-24">
         <h3
-          class="max-w-md text-4xl text-white sm:text-5xl md:max-w-2xl md:text-6xl lg:max-w-3xl lg:text-7xl"
+          ref="titleEl"
+          style="line-height: 1.25"
+          class="fix-kerning max-w-md text-4xl text-white sm:text-5xl md:max-w-2xl md:text-6xl lg:max-w-3xl lg:text-7xl"
         >
-          <div
-            class="inline-flex h-10 w-10 translate-y-2 transform rounded-full bg-gray-600 sm:h-12 sm:w-12 md:h-16 md:w-16"
-          ></div>
           {{ t('footer.title') }}
         </h3>
 
