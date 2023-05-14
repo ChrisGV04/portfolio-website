@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { gsap, ScrollTrigger } from 'gsap/all';
+import type { GlobalInfo } from '~/types/cms';
 
 if (process.client) gsap.registerPlugin(ScrollTrigger);
 
 const { locale } = useI18n();
+const env = useRuntimeConfig();
+
+const { data, error } = await useFetch<GlobalInfo>(
+  `${env.public.apiUrl}/globals/global-info?locale=${locale.value}`
+);
 
 /* ANIMATION */
 const app = useNuxtApp();
@@ -99,7 +105,7 @@ app.hooks.hookOnce('page:finish', async () => {
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col">
+  <div v-if="data && !error" class="flex min-h-screen flex-col">
     <Html :lang="locale" />
     <Body class="bg-gray-900 antialiased" />
 
@@ -127,6 +133,6 @@ app.hooks.hookOnce('page:finish', async () => {
 
     <NuxtPage class="flex-1" :transition="{ css: false, mode: 'out-in', onEnter, onLeave }" />
 
-    <GlobalFooter />
+    <GlobalFooter :contact-methods="data.footerContactMethods" />
   </div>
 </template>
