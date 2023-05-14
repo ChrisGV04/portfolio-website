@@ -22,12 +22,18 @@ export interface ProjectInfo {
 
 export interface HomepageInfo {
   id: string;
-  hero: {
-    gallery: { id?: string; img: PayloadMediaFile }[];
-  };
+  hero: { gallery: { id?: string; img: PayloadMediaFile }[] };
   about: { title: string; subtext: string };
   featProjects: { projects: Project[] };
   bottomMarquee: {
     gallery: { id?: string; img: PayloadMediaFile }[];
   };
+}
+
+export interface ContactPageInfo {
+  id: string;
+  avatar: PayloadMediaFile;
+  contactMethods: { name: string; url: string; id?: string }[];
+  info: { name: string; id?: string }[];
+  otherMedia: { name: string; url: string; id?: string }[];
 }
