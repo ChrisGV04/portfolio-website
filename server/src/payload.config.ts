@@ -7,6 +7,7 @@ import { Projects } from './collections/Projects';
 import { Uploads } from './collections/Uploads';
 import { Users } from './collections/Users';
 import { ContactPage } from './globals/ContactPage';
+import { GlobalInfo } from './globals/GlobalInfo';
 import { HomePage } from './globals/Homepage';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
@@ -36,7 +37,7 @@ export default buildConfig({
     fallback: true,
   },
 
-  globals: [HomePage, ContactPage],
+  globals: [GlobalInfo, HomePage, ContactPage],
   collections: [Users, Uploads, Projects],
 
   graphQL: { disable: true },

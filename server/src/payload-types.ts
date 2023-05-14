@@ -12,6 +12,7 @@ export interface Config {
     projects: Project;
   };
   globals: {
+    'global-info': GlobalInfo;
     homepage: Homepage;
     'contact-page': ContactPage;
   };
@@ -46,6 +47,15 @@ export interface Project {
   year: number;
   projectType: 'website' | 'ecommerce' | 'webApp';
   liveUrl?: string;
+}
+export interface GlobalInfo {
+  id: string;
+  maintenance: boolean;
+  footerContactMethods: {
+    name: string;
+    url: string;
+    id?: string;
+  }[];
 }
 export interface Homepage {
   id: string;

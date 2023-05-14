@@ -37,3 +37,9 @@ export interface ContactPageInfo {
   info: { name: string; id?: string }[];
   otherMedia: { name: string; url: string; id?: string }[];
 }
+
+export interface GlobalInfo {
+  id: string;
+  maintenance: boolean;
+  footerContactMethods: { name: string; url: string; id?: string }[];
+}
