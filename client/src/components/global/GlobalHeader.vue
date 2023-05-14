@@ -21,15 +21,15 @@ watch(isMobile, (mobile) => {
 </script>
 
 <template>
-  <header class="fixed inset-x-0 top-0 z-20">
+  <header class="pointer-events-none fixed inset-x-0 top-0 z-20">
     <BaseContainer size="full" class="flex justify-between pt-6 sm:pt-8" no-y-padding>
       <div>
-        <NuxtLink :to="localeRoute('/')">
+        <NuxtLink class="pointer-events-auto" :to="localeRoute('/')">
           <img class="w-14 sm:w-20" src="/logo/cgvweb-logo-box.svg" alt="CGV WEB Logo" />
         </NuxtLink>
       </div>
 
-      <div>
+      <div class="pointer-events-auto">
         <nav class="hidden xl:flex xl:flex-col xl:items-end xl:space-y-3">
           <NuxtLink class="navlink" active-class="underline" :to="localeRoute('/projects')">
             {{ t('navigation.projects') }}

@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
 import SplitType from 'split-type';
+import { ProjectInfo } from '~/types/cms';
 
 const { t } = useI18n();
 
 const app = useNuxtApp();
 const transition = useTransitionStore();
+
+defineProps({ modelValue: { type: String as PropType<'all' | ProjectInfo['projectType']>, required: true } });
+defineEmits({ 'update:modelValue': (value: 'all' | ProjectInfo['projectType']) => true });
 
 const titleEl = ref<HTMLElement | null>(null);
 
@@ -53,10 +57,29 @@ app.hooks.hookOnce('page:reveal', () => {
       </h1>
 
       <nav class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:flex lg:gap-8">
-        <BaseButton variant="white">{{ t('general.all') }}</BaseButton>
-        <BaseButton>{{ t('general.websites') }}</BaseButton>
-        <BaseButton>{{ t('general.ecommerces') }}</BaseButton>
-        <BaseButton>{{ t('general.webApps') }}</BaseButton>
+        <BaseButton
+          @click="$emit('update:modelValue', 'all')"
+          :variant="modelValue === 'all' ? 'white' : 'default'"
+          >{{ t('general.all') }}</BaseButton
+        >
+
+        <BaseButton
+          @click="$emit('update:modelValue', 'website')"
+          :variant="modelValue === 'website' ? 'white' : 'default'"
+          >{{ t('general.websites') }}</BaseButton
+        >
+
+        <BaseButton
+          @click="$emit('update:modelValue', 'ecommerce')"
+          :variant="modelValue === 'ecommerce' ? 'white' : 'default'"
+          >{{ t('general.ecommerces') }}</BaseButton
+        >
+
+        <BaseButton
+          @click="$emit('update:modelValue', 'webApp')"
+          :variant="modelValue === 'webApp' ? 'white' : 'default'"
+          >{{ t('general.webApps') }}</BaseButton
+        >
       </nav>
     </BaseContainer>
   </section>
