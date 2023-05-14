@@ -53,7 +53,7 @@ app.hooks.hookOnce('page:reveal', () => {
     <BaseContainer no-y-padding class="flex h-screen items-center justify-center md:items-end">
       <h1
         ref="titleEl"
-        class="mb-10 text-center text-[clamp(2rem,10vw,8.75rem)] uppercase leading-none text-white"
+        class="mb-10 text-center text-[clamp(2rem,10vw,8.75rem)] uppercase leading-none text-white drop-shadow-sm"
       >
         {{ t('homePage.heroTitle') }}
       </h1>
