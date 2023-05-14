@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { gsap } from 'gsap';
+import SplitType from 'split-type';
 import type { ContactPageInfo } from '~/types/cms';
 
 const env = useRuntimeConfig();
@@ -10,6 +12,43 @@ const { data, error } = await useFetch<ContactPageInfo>(
   `${env.public.apiUrl}/globals/contact-page?locale=${locale.value}`
 );
 if (error.value) throw createError({ ...error.value, fatal: true });
+
+/* ANIMATIONS */
+const app = useNuxtApp();
+const transition = useTransitionStore();
+
+const titleEl = ref<HTMLElement | null>(null);
+
+function createRevealAnimation() {
+  const tl = gsap.timeline({
+    onComplete() {
+      tl.revert();
+    },
+  });
+
+  const split = new SplitType(titleEl.value!, {
+    types: ['words', 'lines'],
+    lineClass: 'overflow-hidden',
+  });
+
+  tl.from(split.words, {
+    y: '100%',
+    duration: 1.2,
+    stagger: 0.03,
+    ease: 'expo.out',
+    onComplete() {
+      split.revert();
+    },
+  });
+
+  return tl;
+}
+
+app.hooks.hookOnce('page:reveal', () => {
+  if (!process.client) return;
+  const tl = createRevealAnimation();
+  if (!!transition.timeline) transition.timeline.add(tl, '-=0.6');
+});
 </script>
 
 <template>
@@ -20,7 +59,11 @@ if (error.value) throw createError({ ...error.value, fatal: true });
       class="flex flex-col gap-8 py-24 sm:pt-32 md:flex-row md:items-center md:justify-between"
     >
       <div class="max-w-lg lg:max-w-3xl">
-        <h1 class="fix-kerning block w-full text-4xl text-white sm:text-5xl lg:text-7xl">
+        <h1
+          ref="titleEl"
+          style="line-height: 1.25"
+          class="fix-kerning block w-full text-4xl text-white sm:text-5xl lg:text-7xl"
+        >
           {{ t('contactPage.heroTitle') }}
         </h1>
 
