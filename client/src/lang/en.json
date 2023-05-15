@@ -61,7 +61,7 @@
 
   "errorPage": {
     "oops": "Oops!",
-    "title": "An error has ocurred",
+    "title": "An error has occurred",
     "internalError": "Internal error. Please come back later",
     "notFound": "Error 404. Resource was moved or doesn't exist",
     "unknownError": "Unknown error. We're working on it! Please come back later",
