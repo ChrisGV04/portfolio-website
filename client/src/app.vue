@@ -15,12 +15,6 @@ if (error.value) throw createError({ ...error.value, fatal: true, cause: 'app' }
 /* ANIMATION */
 const app = useNuxtApp();
 
-/**
- * Custom hook to let the pages know when they can
- * play their reveal animations
- */
-app.hooks.addHooks('page:reveal');
-
 const transition = useTransitionStore();
 
 const courtainEl = ref<HTMLElement | null>(null);
