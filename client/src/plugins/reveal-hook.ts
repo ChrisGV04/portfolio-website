@@ -9,3 +9,9 @@ export default defineNuxtPlugin({
     nuxtApp.hooks.addHooks('page:reveal');
   },
 });
+
+declare module '#app' {
+  export interface RuntimeNuxtHooks {
+    'page:reveal': () => void;
+  }
+}
