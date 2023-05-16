@@ -5,7 +5,7 @@ const props = defineProps({ show: Boolean });
 defineEmits(['close']);
 
 const { t } = useI18n();
-const i18nCookie = useCookie('i18n');
+const i18nCookie = useCookie('i18n', { sameSite: 'lax' });
 const localeRoute = useLocaleRoute();
 const switchLocale = useSwitchLocalePath();
 
