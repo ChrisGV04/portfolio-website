@@ -1,0 +1,36 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Deploy to instance
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.HOST_USERNAME }}
+          key: ${{ secrets.HOST_KEY }}
+          port: ${{ secrets.HOST_PORT }}
+          script: |
+            eval `ssh-agent -s` && ssh-add ~/.ssh/id_rsa_github
+            cd apps/portfolio
+            git pull
+            cd server
+            pnpm i
+            pnpm build
+            cd ../client
+            pnpm i
+            pnpm build
+            cd ..
+            pm2 restart pm2.config.js
+            echo "${{ secrets.SUDO_PWD }}" | sudo systemctl restart nginx
