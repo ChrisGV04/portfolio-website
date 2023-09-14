@@ -5,12 +5,8 @@ on:
     branches: ['main']
 
 jobs:
-  deploy-cms:
+  deploy:
     runs-on: self-hosted
-
-    defaults:
-      run:
-        working-directory: ./server
 
     strategy:
       matrix:
@@ -27,40 +23,18 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-          cache-dependency-path: './server/pnpm-lock.yaml' # Needed to use multiple directories
-      - run: pnpm install
-      - name: Add envirnonment variables from base64
+          cache-dependency-path: '**/pnpm-lock.yaml' # Needed to use multiple directories
+      - name: Setup CMS
         run: |
           touch .env
           echo "${{ secrets.CMS_ENV }}" | base64 --decode > .env
-      - run: pnpm build
-
-  deploy-client:
-    runs-on: self-hosted
-
-    defaults:
-      run:
-        working-directory: ./client
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-          cache-dependency-path: './client/pnpm-lock.yaml' # Needed to use multiple directories
-      - run: pnpm install
-      - name: Add envirnonment variables from base64
+          pnpm install
+          pnpm build
+        working-directory: ./server
+      - name: Setup Client
         run: |
           touch .env
           echo "${{ secrets.CLIENT_ENV }}" | base64 --decode > .env
-      - run: pnpm build
+          pnpm install
+          pnpm build
+        working-directory: ./client
