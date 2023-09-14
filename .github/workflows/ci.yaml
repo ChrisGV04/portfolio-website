@@ -38,3 +38,8 @@ jobs:
           pnpm install
           pnpm build
         working-directory: ./client
+      - name: Restart PM2
+        run: |
+          touch pm2.config.js
+          echo "${{ secrets.PM2_CONFIG }}" | base64 --decode > pm2.config.js
+          pm2 restart pm2.config.js
