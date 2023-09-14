@@ -22,8 +22,10 @@ jobs:
           key: ${{ secrets.HOST_KEY }}
           port: ${{ secrets.HOST_PORT }}
           script: |
+            cd /home/${{ secrets.HOST_USERNAME }}
+            source /home/${{ secrets.HOST_USERNAME }}/.bashrc
             eval `ssh-agent -s` && ssh-add ~/.ssh/id_rsa_github
-            cd apps/portfolio
+            cd /home/${{ secrets.HOST_USERNAME }}/apps/portfolio
             git pull
             cd server
             pnpm i
