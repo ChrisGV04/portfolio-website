@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-          cache-dependency-path: './server/pnpm-lock.yaml'
+          cache-dependency-path: './server/pnpm-lock.yaml' # Needed to use multiple directories
       - run: pnpm install
       - run: pnpm build
 
@@ -53,6 +53,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-          cache-dependency-path: './client/pnpm-lock.yaml'
+          cache-dependency-path: './client/pnpm-lock.yaml' # Needed to use multiple directories
       - run: pnpm install
       - run: pnpm build
