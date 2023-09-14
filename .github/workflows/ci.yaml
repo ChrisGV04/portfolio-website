@@ -2,7 +2,8 @@ name: Deployment
 
 on:
   push:
-    branches: ['main']
+    # branches: ['main']
+    branches: []
 
 jobs:
   deploy:
