@@ -29,7 +29,7 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: './server/pnpm-lock.yaml' # Needed to use multiple directories
       - run: pnpm install
-      - name: Add envirnonment variables
+      - name: Add envirnonment variables from base64
         run: |
           touch .env
           echo "${{ secrets.CMS_ENV }}" | base64 --decode > .env
@@ -59,7 +59,7 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: './client/pnpm-lock.yaml' # Needed to use multiple directories
       - run: pnpm install
-      - name: Add envirnonment variables
+      - name: Add envirnonment variables from base64
         run: |
           touch .env
           echo "${{ secrets.CLIENT_ENV }}" | base64 --decode > .env
