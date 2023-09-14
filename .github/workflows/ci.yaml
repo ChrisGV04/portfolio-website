@@ -23,11 +23,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-      - run: cd ./server
       - run: pnpm install
+        working-directory: ./server
       - run: pnpm build
-      - run: cd ../client
+        working-directory: ./server
       - run: pnpm install
+        working-directory: ./client
       - run: pnpm build
-      - run: cd ..
-      - run: pm2 restart pm2.config.js
+        working-directory: ./client
+      # - run: pm2 restart pm2.config.js
