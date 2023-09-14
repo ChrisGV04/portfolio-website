@@ -5,8 +5,12 @@ on:
     branches: ['main']
 
 jobs:
-  deploy:
+  deploy-cms:
     runs-on: self-hosted
+
+    defaults:
+      run:
+        working-directory: ./server
 
     strategy:
       matrix:
@@ -24,11 +28,29 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
       - run: pnpm install
-        working-directory: ./server
       - run: pnpm build
-        working-directory: ./server
+
+  deploy-client:
+    runs-on: self-hosted
+
+    defaults:
+      run:
+        working-directory: ./client
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - run: pnpm install
-        working-directory: ./client
       - run: pnpm build
-        working-directory: ./client
-      # - run: pm2 restart pm2.config.js
