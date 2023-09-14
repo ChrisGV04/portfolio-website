@@ -2,37 +2,32 @@ name: Deployment
 
 on:
   push:
-    branches:
-      - main
+    branches: ['master']
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     strategy:
       matrix:
         node-version: [18.x]
 
     steps:
-      - name: Deploy to instance
-        uses: appleboy/ssh-action@master
+      - uses: actions/checkout@v3
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.HOST_USERNAME }}
-          key: ${{ secrets.HOST_KEY }}
-          port: ${{ secrets.HOST_PORT }}
-          script: |
-            cd /home/${{ secrets.HOST_USERNAME }}
-            source /home/${{ secrets.HOST_USERNAME }}/.bashrc
-            eval `ssh-agent -s` && ssh-add ~/.ssh/id_rsa_github
-            cd /home/${{ secrets.HOST_USERNAME }}/apps/portfolio
-            git pull
-            cd server
-            pnpm i
-            pnpm build
-            cd ../client
-            pnpm i
-            pnpm build
-            cd ..
-            pm2 restart pm2.config.js
-            echo "${{ secrets.SUDO_PWD }}" | sudo systemctl restart nginx
+          version: 8
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - run: cd ./server
+      - run: pnpm install
+      - run: pnpm build
+      - run: cd ../client
+      - run: pnpm install
+      - run: pnpm build
+      - run: cd ..
+      - run: pm2 restart pm2.config.js
