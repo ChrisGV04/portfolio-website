@@ -30,7 +30,9 @@ jobs:
           cache-dependency-path: './server/pnpm-lock.yaml' # Needed to use multiple directories
       - run: pnpm install
       - name: Add envirnonment variables
-        run: echo "${{ secrets.CMS_ENV }}" > .env
+        run: |
+          touch .env
+          echo "${{ secrets.CMS_ENV }}" > .env
       - run: pnpm build
 
   deploy-client:
@@ -58,5 +60,7 @@ jobs:
           cache-dependency-path: './client/pnpm-lock.yaml' # Needed to use multiple directories
       - run: pnpm install
       - name: Add envirnonment variables
-        run: echo "${{ secrets.CLIENT_ENV }}" > .env
+        run: |
+          touch .env
+          echo "${{ secrets.CLIENT_ENV }}" > .env
       - run: pnpm build
