@@ -14,16 +14,20 @@ const visitEl = ref<HTMLElement | null>(null);
 useCursorFollower(wrapperEl, visitEl);
 
 const { data, error } = await useFetch<Paginated<ProjectInfo>>(
-  `${env.public.apiUrl}/projects?locale=${locale.value}&limit=20&sort=id`
+  `${env.public.apiUrl}/projects?locale=${locale.value}&limit=20&sort=-year`
 );
 if (error.value) throw createError({ ...error.value, fatal: true });
+
+// Payload 1.x sorts by a single field only, so same-year ties are broken by name here
+const projects = computed(() =>
+  [...(data.value?.docs ?? [])].sort((a, b) => b.year - a.year || a.name.localeCompare(b.name, locale.value))
+);
 
 const filter = ref<'all' | ProjectInfo['projectType']>('all');
 
 const filteredProjects = computed(() => {
-  if (!data.value) return [];
-  if (filter.value === 'all') return data.value.docs;
-  return data.value.docs.filter((project) => project.projectType === filter.value);
+  if (filter.value === 'all') return projects.value;
+  return projects.value.filter((project) => project.projectType === filter.value);
 });
 
 function onBeforeEnter(el: Element) {
