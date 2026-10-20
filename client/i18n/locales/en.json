@@ -1,0 +1,70 @@
+{
+  "general": {
+    "all": "All",
+    "year": "year",
+    "visit": "Visit",
+    "name": "CGV WEB",
+    "social": "Social",
+    "webApp": "Web app",
+    "webApps": "Web apps",
+    "customer": "Customer",
+    "viewAll": "View all",
+    "services": "Services",
+    "copyright": "Copyright",
+    "website": "Website",
+    "websites": "Websites",
+    "getInTouch": "Get in touch",
+    "information": "Information",
+    "ecommerce": "E-commerce",
+    "ecommerces": "E-commerce",
+    "otherMedia": "Other media",
+    "socialMedia": "Social media",
+    "contactMethods": "Contact methods",
+    "featuredProjects": "Featured projects"
+  },
+
+  "findMeOn": {
+    "github": "Find me on Github",
+    "whatsapp": "Let's chat on WhatsApp",
+    "instagram": "Find me on Instagram"
+  },
+
+  "navigation": {
+    "projects": "Projects",
+    "contact": "Contact",
+    "english": "Change to english",
+    "spanish": "Cambiar a español",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+
+  "footer": {
+    "title": "Let's start your project today"
+  },
+
+  "homePage": {
+    "heroTitle": "Custom web design",
+
+    "about": {
+      "title": "Creating impactful projects. Let's take your business to the next level with a professional and modern website.",
+      "body": "I'm Christian Gil, software designer and developer for the web based in Guadalajara, Jalisco, México.\n\n I will help your business look amazing with it's own website and to develop custom web applications."
+    }
+  },
+
+  "projectsPage": {
+    "heroTitle": "Building modern projects"
+  },
+
+  "contactPage": {
+    "heroTitle": "Let's work together on your project"
+  },
+
+  "errorPage": {
+    "oops": "Oops!",
+    "title": "An error has occurred",
+    "internalError": "Internal error. Please come back later",
+    "notFound": "Error 404. Resource was moved or doesn't exist",
+    "unknownErrorToHome": "Unknown error. Try going to the home page",
+    "goHome": "Go back home"
+  }
+}

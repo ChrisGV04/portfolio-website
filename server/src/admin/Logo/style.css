@@ -1,12 +1,12 @@
-.logo img {
+.cgvweb-logo img {
   max-width: 10rem;
   margin: auto;
 }
 
-[data-theme='light'] .logo .dark {
+[data-theme='light'] .cgvweb-logo .dark {
   display: none;
 }
 
-[data-theme='dark'] .logo .light {
+[data-theme='dark'] .cgvweb-logo .light {
   display: none;
 }

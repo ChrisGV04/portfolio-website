@@ -31,6 +31,20 @@ server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   }
 
+  # Admin UI assets (Next.js). The Nuxt client uses /_nuxt, so there is no overlap.
+  location /_next {
+    proxy_pass http://localhost:3000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+
+  # Upload files (pages load many at once, so they skip the API rate limit)
+  location /api/uploads/file {
+    proxy_pass http://localhost:3000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+
   # API
   location /api {
     limit_req zone=cgvweb-rate-limit burst=12 delay=8;
@@ -40,7 +54,7 @@ server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   }
 
-  # Uploads
+  # Legacy v1 upload URLs, rewritten by the CMS to /api/uploads/file
   location /uploads {
     proxy_pass http://localhost:3000;
     proxy_set_header Host $host;

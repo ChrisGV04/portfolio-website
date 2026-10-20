@@ -1,5 +1,4 @@
-import { GlobalConfig } from 'payload/types';
-import { Uploads } from '../collections/Uploads';
+import type { GlobalConfig } from 'payload';
 
 export const ContactPage: GlobalConfig = {
   slug: 'contact-page',
@@ -13,7 +12,7 @@ export const ContactPage: GlobalConfig = {
       type: 'upload',
       required: true,
       label: 'Avatar',
-      relationTo: Uploads.slug,
+      relationTo: 'uploads',
     }, // End Avatar
 
     {
@@ -27,7 +26,7 @@ export const ContactPage: GlobalConfig = {
       },
       admin: {
         components: {
-          RowLabel: ({ data, index }) => data?.name || `-- @ ${index}`,
+          RowLabel: '/admin/RowLabel#RowLabel',
         },
       },
       fields: [
@@ -65,7 +64,7 @@ export const ContactPage: GlobalConfig = {
       },
       admin: {
         components: {
-          RowLabel: ({ data, index }) => data?.name || `-- @ ${index}`,
+          RowLabel: '/admin/RowLabel#RowLabel',
         },
       },
       fields: [
@@ -90,7 +89,7 @@ export const ContactPage: GlobalConfig = {
       },
       admin: {
         components: {
-          RowLabel: ({ data, index }) => data?.name || `-- @ ${index}`,
+          RowLabel: '/admin/RowLabel#RowLabel',
         },
       },
       fields: [

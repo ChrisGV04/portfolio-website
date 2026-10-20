@@ -1,5 +1,7 @@
-module.exports = {
-  plugins: [require('prettier-plugin-tailwindcss')],
+/** @type {import('prettier').Config} */
+export default {
+  plugins: ['prettier-plugin-tailwindcss'],
+  tailwindStylesheet: './app/assets/css/tailwind.css',
   tabWidth: 2,
   useTabs: false,
   bracketSameLine: false,

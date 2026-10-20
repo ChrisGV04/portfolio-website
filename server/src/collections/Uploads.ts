@@ -1,4 +1,8 @@
-import { CollectionConfig } from 'payload/types';
+import path from 'path';
+import type { CollectionConfig } from 'payload';
+import { fileURLToPath } from 'url';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const Uploads: CollectionConfig = {
   slug: 'uploads',
@@ -10,9 +14,9 @@ export const Uploads: CollectionConfig = {
     singular: { en: 'Upload', es: 'Archivo' },
   },
   admin: { group: 'Admin', useAsTitle: 'alt' },
+  // Files are served by Payload at `/api/uploads/file/:filename` (absolute `url` in API responses).
   upload: {
-    staticURL: '/uploads',
-    staticDir: '../public/uploads',
+    staticDir: path.resolve(dirname, '../../public/uploads'),
     mimeTypes: ['image/*', 'video/*'],
   },
   fields: [
