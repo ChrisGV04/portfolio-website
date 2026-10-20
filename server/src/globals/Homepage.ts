@@ -1,6 +1,4 @@
-import { GlobalConfig } from 'payload/types';
-import { Projects } from '../collections/Projects';
-import { Uploads } from '../collections/Uploads';
+import type { GlobalConfig } from 'payload';
 import { titleField } from '../fields/TitleField';
 import { subtextField } from '../fields/SubtextField';
 
@@ -31,7 +29,7 @@ export const HomePage: GlobalConfig = {
                   name: 'img',
                   type: 'upload',
                   required: true,
-                  relationTo: Uploads.slug,
+                  relationTo: 'uploads',
                   label: { en: 'Image', es: 'Imagen' },
                 },
               ],
@@ -42,7 +40,7 @@ export const HomePage: GlobalConfig = {
         {
           name: 'about',
           label: { en: 'About', es: 'Acerca' },
-          fields: [titleField(), subtextField()],
+          fields: [titleField, subtextField],
         }, // End About
 
         {
@@ -53,10 +51,10 @@ export const HomePage: GlobalConfig = {
               name: 'projects',
               required: true,
               type: 'relationship',
-              relationTo: Projects.slug,
+              relationTo: 'projects',
               hasMany: true,
-              min: 3,
-              max: 9,
+              minRows: 3,
+              maxRows: 9,
               label: { en: 'Projects', es: 'Proyectos' },
             },
           ],
@@ -79,7 +77,7 @@ export const HomePage: GlobalConfig = {
                   name: 'img',
                   type: 'upload',
                   required: true,
-                  relationTo: Uploads.slug,
+                  relationTo: 'uploads',
                   label: { en: 'Image', es: 'Imagen' },
                 },
               ],

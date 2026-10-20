@@ -1,4 +1,4 @@
-import { GlobalConfig } from 'payload/types';
+import type { GlobalConfig } from 'payload';
 
 export const GlobalInfo: GlobalConfig = {
   slug: 'global-info',
@@ -26,7 +26,7 @@ export const GlobalInfo: GlobalConfig = {
       },
       admin: {
         components: {
-          RowLabel: ({ data, index }) => data?.name || `-- @ ${index}`,
+          RowLabel: '/admin/RowLabel#RowLabel',
         },
       },
       fields: [

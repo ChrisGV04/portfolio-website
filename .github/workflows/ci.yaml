@@ -9,37 +9,35 @@ jobs:
   deploy:
     runs-on: self-hosted
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           clean: false
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: 8
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+          version: 12
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: .nvmrc
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml' # Needed to use multiple directories
       - name: Setup CMS
         run: |
           touch .env
           echo "${{ secrets.CMS_ENV }}" | base64 --decode > .env
-          pnpm install
+          pnpm install --frozen-lockfile
+          pnpm migrate
           pnpm build
         working-directory: ./server
       - name: Setup Client
         run: |
           touch .env
           echo "${{ secrets.CLIENT_ENV }}" | base64 --decode > .env
-          pnpm install
+          pnpm install --frozen-lockfile
+          pnpm typecheck
           pnpm build
         working-directory: ./client
       - name: Restart PM2

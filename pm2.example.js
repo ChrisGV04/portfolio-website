@@ -4,16 +4,18 @@ module.exports = {
       name: 'cgvweb-frontend',
       exec_mode: 'cluster',
       instances: 'max',
-      args: ['-r dotenv/config'],
+      node_args: '--env-file=.env',
       cwd: './client',
       script: './.output/server/index.mjs',
       env: { PORT: 8080 },
     },
     {
       name: 'cgvweb-cms',
-      script: 'npm',
-      args: 'run serve',
+      script: 'pnpm',
+      args: 'start',
       cwd: './server',
+      // `next start` reads PORT from the process env, not from .env
+      env: { PORT: 3000 },
     },
   ],
 };
