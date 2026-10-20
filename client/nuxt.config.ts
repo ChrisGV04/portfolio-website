@@ -29,8 +29,9 @@ export default defineNuxtConfig({
     public: { apiUrl: '' },
   },
 
-  // Inline SVGs so Tailwind size classes win over the default 1em
-  icon: { mode: 'svg' },
+  // Inline SVGs so Tailwind size classes win over the default 1em.
+  // Bundle the icons we use: the runtime endpoint lives under /api, which nginx routes to the CMS.
+  icon: { mode: 'svg', clientBundle: { scan: true } },
 
   i18n: {
     defaultLocale: 'es',
